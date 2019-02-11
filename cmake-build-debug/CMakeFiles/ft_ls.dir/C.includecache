@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/ggavryly/CLionProjects/ft_ls/ft_ls.h
-libft/libft.h
-/Users/ggavryly/CLionProjects/ft_ls/libft/libft.h
+/Users/ggavryly/CLionProjects/ft_ls/include/ft_ls.h
+../libft/include/libft.h
+/Users/ggavryly/CLionProjects/ft_ls/libft/include/libft.h
 sys/types.h
 -
 sys/xattr.h
@@ -36,7 +36,7 @@ pwd.h
 grp.h
 -
 
-/Users/ggavryly/CLionProjects/ft_ls/libft/libft.h
+/Users/ggavryly/CLionProjects/ft_ls/libft/include/libft.h
 string.h
 -
 stdlib.h
@@ -50,7 +50,7 @@ limits.h
 stdint.h
 -
 
-/Users/ggavryly/CLionProjects/ft_ls/main.c
-ft_ls.h
-/Users/ggavryly/CLionProjects/ft_ls/ft_ls.h
+/Users/ggavryly/CLionProjects/ft_ls/src/main.c
+../include/ft_ls.h
+/Users/ggavryly/CLionProjects/ft_ls/include/ft_ls.h
 

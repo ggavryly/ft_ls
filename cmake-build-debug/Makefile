@@ -123,32 +123,221 @@ ft_ls/fast:
 	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/build
 .PHONY : ft_ls/fast
 
-main.o: main.c.o
+src/display.o: src/display.c.o
 
-.PHONY : main.o
+.PHONY : src/display.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/main.c.o
-.PHONY : main.c.o
+src/display.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/display.c.o
+.PHONY : src/display.c.o
 
-main.i: main.c.i
+src/display.i: src/display.c.i
 
-.PHONY : main.i
+.PHONY : src/display.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/main.c.i
-.PHONY : main.c.i
+src/display.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/display.c.i
+.PHONY : src/display.c.i
 
-main.s: main.c.s
+src/display.s: src/display.c.s
 
-.PHONY : main.s
+.PHONY : src/display.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/main.c.s
-.PHONY : main.c.s
+src/display.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/display.c.s
+.PHONY : src/display.c.s
+
+src/errors.o: src/errors.c.o
+
+.PHONY : src/errors.o
+
+# target to build an object file
+src/errors.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/errors.c.o
+.PHONY : src/errors.c.o
+
+src/errors.i: src/errors.c.i
+
+.PHONY : src/errors.i
+
+# target to preprocess a source file
+src/errors.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/errors.c.i
+.PHONY : src/errors.c.i
+
+src/errors.s: src/errors.c.s
+
+.PHONY : src/errors.s
+
+# target to generate assembly for a file
+src/errors.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/errors.c.s
+.PHONY : src/errors.c.s
+
+src/init_info.o: src/init_info.c.o
+
+.PHONY : src/init_info.o
+
+# target to build an object file
+src/init_info.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/init_info.c.o
+.PHONY : src/init_info.c.o
+
+src/init_info.i: src/init_info.c.i
+
+.PHONY : src/init_info.i
+
+# target to preprocess a source file
+src/init_info.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/init_info.c.i
+.PHONY : src/init_info.c.i
+
+src/init_info.s: src/init_info.c.s
+
+.PHONY : src/init_info.s
+
+# target to generate assembly for a file
+src/init_info.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/init_info.c.s
+.PHONY : src/init_info.c.s
+
+src/list_job.o: src/list_job.c.o
+
+.PHONY : src/list_job.o
+
+# target to build an object file
+src/list_job.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/list_job.c.o
+.PHONY : src/list_job.c.o
+
+src/list_job.i: src/list_job.c.i
+
+.PHONY : src/list_job.i
+
+# target to preprocess a source file
+src/list_job.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/list_job.c.i
+.PHONY : src/list_job.c.i
+
+src/list_job.s: src/list_job.c.s
+
+.PHONY : src/list_job.s
+
+# target to generate assembly for a file
+src/list_job.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/list_job.c.s
+.PHONY : src/list_job.c.s
+
+src/main.o: src/main.c.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/main.c.o
+.PHONY : src/main.c.o
+
+src/main.i: src/main.c.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/main.c.i
+.PHONY : src/main.c.i
+
+src/main.s: src/main.c.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/main.c.s
+.PHONY : src/main.c.s
+
+src/parse_flags.o: src/parse_flags.c.o
+
+.PHONY : src/parse_flags.o
+
+# target to build an object file
+src/parse_flags.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/parse_flags.c.o
+.PHONY : src/parse_flags.c.o
+
+src/parse_flags.i: src/parse_flags.c.i
+
+.PHONY : src/parse_flags.i
+
+# target to preprocess a source file
+src/parse_flags.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/parse_flags.c.i
+.PHONY : src/parse_flags.c.i
+
+src/parse_flags.s: src/parse_flags.c.s
+
+.PHONY : src/parse_flags.s
+
+# target to generate assembly for a file
+src/parse_flags.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/parse_flags.c.s
+.PHONY : src/parse_flags.c.s
+
+src/path_manage.o: src/path_manage.c.o
+
+.PHONY : src/path_manage.o
+
+# target to build an object file
+src/path_manage.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/path_manage.c.o
+.PHONY : src/path_manage.c.o
+
+src/path_manage.i: src/path_manage.c.i
+
+.PHONY : src/path_manage.i
+
+# target to preprocess a source file
+src/path_manage.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/path_manage.c.i
+.PHONY : src/path_manage.c.i
+
+src/path_manage.s: src/path_manage.c.s
+
+.PHONY : src/path_manage.s
+
+# target to generate assembly for a file
+src/path_manage.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/path_manage.c.s
+.PHONY : src/path_manage.c.s
+
+src/sort_list.o: src/sort_list.c.o
+
+.PHONY : src/sort_list.o
+
+# target to build an object file
+src/sort_list.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/sort_list.c.o
+.PHONY : src/sort_list.c.o
+
+src/sort_list.i: src/sort_list.c.i
+
+.PHONY : src/sort_list.i
+
+# target to preprocess a source file
+src/sort_list.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/sort_list.c.i
+.PHONY : src/sort_list.c.i
+
+src/sort_list.s: src/sort_list.c.s
+
+.PHONY : src/sort_list.s
+
+# target to generate assembly for a file
+src/sort_list.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/sort_list.c.s
+.PHONY : src/sort_list.c.s
 
 # Help Target
 help:
@@ -159,9 +348,30 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ft_ls"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/display.o"
+	@echo "... src/display.i"
+	@echo "... src/display.s"
+	@echo "... src/errors.o"
+	@echo "... src/errors.i"
+	@echo "... src/errors.s"
+	@echo "... src/init_info.o"
+	@echo "... src/init_info.i"
+	@echo "... src/init_info.s"
+	@echo "... src/list_job.o"
+	@echo "... src/list_job.i"
+	@echo "... src/list_job.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/parse_flags.o"
+	@echo "... src/parse_flags.i"
+	@echo "... src/parse_flags.s"
+	@echo "... src/path_manage.o"
+	@echo "... src/path_manage.i"
+	@echo "... src/path_manage.s"
+	@echo "... src/sort_list.o"
+	@echo "... src/sort_list.i"
+	@echo "... src/sort_list.s"
 .PHONY : help
 
 

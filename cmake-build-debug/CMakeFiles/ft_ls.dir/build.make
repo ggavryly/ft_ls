@@ -57,32 +57,137 @@ include CMakeFiles/ft_ls.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ft_ls.dir/flags.make
 
-CMakeFiles/ft_ls.dir/main.c.o: CMakeFiles/ft_ls.dir/flags.make
-CMakeFiles/ft_ls.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ft_ls.dir/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/main.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/main.c
+CMakeFiles/ft_ls.dir/src/init_info.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/init_info.c.o: ../src/init_info.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ft_ls.dir/src/init_info.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/init_info.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/init_info.c
 
-CMakeFiles/ft_ls.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/main.c > CMakeFiles/ft_ls.dir/main.c.i
+CMakeFiles/ft_ls.dir/src/init_info.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/init_info.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/init_info.c > CMakeFiles/ft_ls.dir/src/init_info.c.i
 
-CMakeFiles/ft_ls.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/main.c -o CMakeFiles/ft_ls.dir/main.c.s
+CMakeFiles/ft_ls.dir/src/init_info.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/init_info.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/init_info.c -o CMakeFiles/ft_ls.dir/src/init_info.c.s
+
+CMakeFiles/ft_ls.dir/src/errors.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/errors.c.o: ../src/errors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ft_ls.dir/src/errors.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/errors.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/errors.c
+
+CMakeFiles/ft_ls.dir/src/errors.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/errors.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/errors.c > CMakeFiles/ft_ls.dir/src/errors.c.i
+
+CMakeFiles/ft_ls.dir/src/errors.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/errors.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/errors.c -o CMakeFiles/ft_ls.dir/src/errors.c.s
+
+CMakeFiles/ft_ls.dir/src/path_manage.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/path_manage.c.o: ../src/path_manage.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ft_ls.dir/src/path_manage.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/path_manage.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/path_manage.c
+
+CMakeFiles/ft_ls.dir/src/path_manage.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/path_manage.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/path_manage.c > CMakeFiles/ft_ls.dir/src/path_manage.c.i
+
+CMakeFiles/ft_ls.dir/src/path_manage.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/path_manage.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/path_manage.c -o CMakeFiles/ft_ls.dir/src/path_manage.c.s
+
+CMakeFiles/ft_ls.dir/src/list_job.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/list_job.c.o: ../src/list_job.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ft_ls.dir/src/list_job.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/list_job.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/list_job.c
+
+CMakeFiles/ft_ls.dir/src/list_job.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/list_job.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/list_job.c > CMakeFiles/ft_ls.dir/src/list_job.c.i
+
+CMakeFiles/ft_ls.dir/src/list_job.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/list_job.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/list_job.c -o CMakeFiles/ft_ls.dir/src/list_job.c.s
+
+CMakeFiles/ft_ls.dir/src/display.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/display.c.o: ../src/display.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ft_ls.dir/src/display.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/display.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/display.c
+
+CMakeFiles/ft_ls.dir/src/display.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/display.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/display.c > CMakeFiles/ft_ls.dir/src/display.c.i
+
+CMakeFiles/ft_ls.dir/src/display.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/display.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/display.c -o CMakeFiles/ft_ls.dir/src/display.c.s
+
+CMakeFiles/ft_ls.dir/src/parse_flags.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/parse_flags.c.o: ../src/parse_flags.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ft_ls.dir/src/parse_flags.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/parse_flags.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/parse_flags.c
+
+CMakeFiles/ft_ls.dir/src/parse_flags.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/parse_flags.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/parse_flags.c > CMakeFiles/ft_ls.dir/src/parse_flags.c.i
+
+CMakeFiles/ft_ls.dir/src/parse_flags.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/parse_flags.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/parse_flags.c -o CMakeFiles/ft_ls.dir/src/parse_flags.c.s
+
+CMakeFiles/ft_ls.dir/src/main.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/main.c.o: ../src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ft_ls.dir/src/main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/main.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/main.c
+
+CMakeFiles/ft_ls.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/main.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/main.c > CMakeFiles/ft_ls.dir/src/main.c.i
+
+CMakeFiles/ft_ls.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/main.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/main.c -o CMakeFiles/ft_ls.dir/src/main.c.s
+
+CMakeFiles/ft_ls.dir/src/sort_list.c.o: CMakeFiles/ft_ls.dir/flags.make
+CMakeFiles/ft_ls.dir/src/sort_list.c.o: ../src/sort_list.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ft_ls.dir/src/sort_list.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ls.dir/src/sort_list.c.o   -c /Users/ggavryly/CLionProjects/ft_ls/src/sort_list.c
+
+CMakeFiles/ft_ls.dir/src/sort_list.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ls.dir/src/sort_list.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ggavryly/CLionProjects/ft_ls/src/sort_list.c > CMakeFiles/ft_ls.dir/src/sort_list.c.i
+
+CMakeFiles/ft_ls.dir/src/sort_list.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ls.dir/src/sort_list.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ggavryly/CLionProjects/ft_ls/src/sort_list.c -o CMakeFiles/ft_ls.dir/src/sort_list.c.s
 
 # Object files for target ft_ls
 ft_ls_OBJECTS = \
-"CMakeFiles/ft_ls.dir/main.c.o"
+"CMakeFiles/ft_ls.dir/src/init_info.c.o" \
+"CMakeFiles/ft_ls.dir/src/errors.c.o" \
+"CMakeFiles/ft_ls.dir/src/path_manage.c.o" \
+"CMakeFiles/ft_ls.dir/src/list_job.c.o" \
+"CMakeFiles/ft_ls.dir/src/display.c.o" \
+"CMakeFiles/ft_ls.dir/src/parse_flags.c.o" \
+"CMakeFiles/ft_ls.dir/src/main.c.o" \
+"CMakeFiles/ft_ls.dir/src/sort_list.c.o"
 
 # External object files for target ft_ls
 ft_ls_EXTERNAL_OBJECTS =
 
-ft_ls: CMakeFiles/ft_ls.dir/main.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/init_info.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/errors.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/path_manage.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/list_job.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/display.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/parse_flags.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/main.c.o
+ft_ls: CMakeFiles/ft_ls.dir/src/sort_list.c.o
 ft_ls: CMakeFiles/ft_ls.dir/build.make
 ft_ls: ../libft.a
 ft_ls: ../libftprintf.a
 ft_ls: CMakeFiles/ft_ls.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ft_ls"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable ft_ls"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_ls.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

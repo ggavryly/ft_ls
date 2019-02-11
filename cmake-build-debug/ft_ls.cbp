@@ -80,7 +80,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/main.c">
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/display.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/errors.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/init_info.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/list_job.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/main.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/parse_flags.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/path_manage.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/src/sort_list.c">
 			<Option target="ft_ls"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/CLionProjects/ft_ls/CMakeLists.txt">

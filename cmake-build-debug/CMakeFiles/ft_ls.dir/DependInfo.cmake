@@ -4,7 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/ggavryly/CLionProjects/ft_ls/main.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/main.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/display.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/display.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/errors.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/errors.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/init_info.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/init_info.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/list_job.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/list_job.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/main.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/main.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/parse_flags.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/parse_flags.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/path_manage.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/path_manage.c.o"
+  "/Users/ggavryly/CLionProjects/ft_ls/src/sort_list.c" "/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/src/sort_list.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

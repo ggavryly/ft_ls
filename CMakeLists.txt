@@ -9,6 +9,13 @@ set_property(TARGET lib1 PROPERTY IMPORTED_LOCATION /Users/ggavryly/ClionProject
 set_property(TARGET lib2 PROPERTY IMPORTED_LOCATION /Users/ggavryly/ClionProjects/ft_ls/libftprintf.a)
 
 add_executable(ft_ls
-        main.c)
+        src/init_info.c
+        src/errors.c
+        src/path_manage.c
+        src/list_job.c
+        src/display.c
+        src/parse_flags.c
+        src/main.c
+        src/sort_list.c)
 
 target_link_libraries(ft_ls lib1 lib2)
