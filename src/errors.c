@@ -15,5 +15,4 @@
 void	error_procesing(void)
 {
 	ft_putstr(strerror(errno));
-	exit(errno);
 }

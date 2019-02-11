@@ -22,7 +22,7 @@ int		main(int ar, char **av)
 	tmp	= init_option(ar, av, &flags);
 	ar -= tmp + 1;
 	av += tmp + 1;
-	dir = allocate_mem(dir);
+	dir = allocate_dir(dir);
 	path_manage(dir, av, ar);
 	init_info(flags, dir);
 	dir->info->next = sort_file_by_ascii(dir->info->next);

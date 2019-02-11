@@ -12,14 +12,22 @@
 
 #include "../include/ft_ls.h"
 
-t_dir	*allocate_mem(t_dir *dir)
+t_dir	*allocate_dir(t_dir *dir)
 {
 	((dir = (t_dir *)malloc(sizeof(t_dir)))) ? (1) : error_procesing();
 	((dir->info = (t_info *)malloc(sizeof(t_info)))) ? (1) : error_procesing();
 	dir->stream = NULL;
 	dir->info->next = NULL;
 	dir->next = NULL;
+	dir->prev = NULL;
 	return (dir);
+}
+
+t_info	*allocate_info(t_info *info)
+{
+	(info = (t_info *)malloc(sizeof(t_info))) ? (1) : error_procesing();
+	info->next = NULL;
+	return (info);
 }
 
 void	path_manage(t_dir *dir, char **av, int ar)

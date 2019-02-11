@@ -27,6 +27,7 @@
 # include <time.h>
 # include <pwd.h>
 # include <grp.h>
+# include "mlx.h"
 
 # define L	1
 # define RR	2
@@ -34,20 +35,19 @@
 # define R	8
 # define T	16
 
-typedef struct stat		t_stat;
-typedef struct dirent	t_dirent;
-typedef struct passwd	t_passwd;
-typedef struct group	t_group;
+typedef struct stat		t_st;
+typedef struct dirent	t_dire;
 typedef struct			s_info
 {
 	char				name[256];
 	mode_t				mode;
-	nlink_t				s_nlink;
-	uid_t				s_uid;
-	gid_t				st_gid;
-	dev_t				st_rdev;
-	time_t				time;
-	long				ntime;
+	nlink_t				nlink;
+	uid_t				uid;
+	gid_t				gid;
+	dev_t				dev;
+	struct timespec		atime;
+	struct timespec		mtime;
+	struct timespec		ctime;
 	off_t				size;
 	char				path[1024];
 	struct s_info		*next;
@@ -57,13 +57,17 @@ typedef struct			s_dir
 	DIR					*stream;
 	t_info				*info;
 	struct s_dir 		*next;
+	struct s_dir		*prev;
 }						t_dir;
 
 
 int		ft_printf(const char *format, ...);
 
-t_dir	*allocate_mem(t_dir *dir);
+t_dir	*allocate_dir(t_dir *dir);
+t_info	*allocate_info(t_info *info);
 t_info	*sort_file_by_ascii(t_info *dir);
+DIR		*new_dir(t_dir *head);
+void	new_node(t_dir *curr, t_dire *tmp);
 
 int		init_option(int ar, char **av, int	*flags);
 t_dir	*init_info(int flags, t_dir *head);
