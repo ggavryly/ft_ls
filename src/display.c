@@ -18,13 +18,29 @@ void	display(void)
 
 void	display_default(t_dir *dir)
 {
-	if (!dir)
-		return;
-	dir->info = dir->info->next;
 	while (dir->info)
 	{
 		ft_putstr(dir->info->name);
 		write(1,"\n", 1);
 		dir->info = dir->info->next;
 	}
+}
+
+t_dir	*display_dirs(t_dir *dir)
+{
+	t_dir *head;
+
+	head = dir;
+	if (!head)
+		return (NULL);
+	while (head)
+	{
+		ft_putstr(head->info->path);
+		write(1, ":\n", 2);
+		head->info = head->info->next;
+		display_default(head);
+		write(1, "\n", 1);
+		head = head->next;
+	}
+	return (dir);
 }

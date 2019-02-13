@@ -30,6 +30,14 @@ t_info	*allocate_info(t_info *info)
 	return (info);
 }
 
+
+void	add_path(t_info *dst, t_dire *curr_dire, t_info *list)
+{
+	ft_strcpy(dst->path, list->path);
+	ft_strcat(dst->path, "/");
+	ft_strcat(dst->path, curr_dire->d_name);
+}
+
 void	path_manage(t_dir *dir, char **av, int ar)
 {
 	if (!ar)
@@ -38,6 +46,9 @@ void	path_manage(t_dir *dir, char **av, int ar)
 		ft_strcpy(dir->info->path, ".");
 	}
 	else if (*av)
+	{
+		ft_strcpy(dir->info->name, *av);
 		ft_strcpy(dir->info->path, *av);
+	}
 }
 

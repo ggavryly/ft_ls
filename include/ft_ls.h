@@ -27,7 +27,6 @@
 # include <time.h>
 # include <pwd.h>
 # include <grp.h>
-# include "mlx.h"
 
 # define L	1
 # define RR	2
@@ -66,15 +65,19 @@ int		ft_printf(const char *format, ...);
 t_dir	*allocate_dir(t_dir *dir);
 t_info	*allocate_info(t_info *info);
 t_info	*sort_file_by_ascii(t_info *dir);
-DIR		*new_dir(t_dir *head);
-void	new_node(t_dir *curr, t_dire *tmp);
+t_dir	*new_dir(t_dir *curr, t_info *tmp_info, t_dir *dir);
+t_info	*new_node(t_info *info, t_info *tmp_info);
+void	list_free(t_dir *dir);
 
 int		init_option(int ar, char **av, int	*flags);
 t_dir	*init_info(int flags, t_dir *head);
 void	display(void);
 void	display_default(t_dir *head);
+t_dir	*display_dirs(t_dir *head);
+void	info_copy(t_info *dst, t_info *tmp_info);
 
 void	path_manage(t_dir *head, char **av, int ar);
+void	add_path(t_info *curr, t_dire *curr_dire, t_info *list);
 
 void	error_procesing(void);
 #endif

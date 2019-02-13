@@ -25,9 +25,9 @@ int		main(int ar, char **av)
 	dir = allocate_dir(dir);
 	path_manage(dir, av, ar);
 	init_info(flags, dir);
-	dir->info->next = sort_file_by_ascii(dir->info->next);
-	display_default(dir);
+	dir = display_dirs(dir);
 	clock_t end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+	//system("leaks ft_ls");
 	printf("%lf\n", time_spent);
 }
