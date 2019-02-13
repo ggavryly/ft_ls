@@ -45,7 +45,7 @@ void	add_info(t_dir *last, t_info *add_info)
 	last_info->next = add_info;
 }
 
-t_info	*new_node(t_info *dir_info,t_info *tmp_info)
+void	new_node(t_dir *dir,t_info *tmp_info)
 {
 	t_info *new;
 
@@ -61,8 +61,7 @@ t_info	*new_node(t_info *dir_info,t_info *tmp_info)
 	new->atime = tmp_info->atime;
 	new->mtime = tmp_info->mtime;
 	new->ctime = tmp_info->ctime;
-	dir_info->next = new;
-	return (new);
+	add_info(dir, new);
 }
 
 void	info_copy(t_info *dst, t_info *tmp_info)

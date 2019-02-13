@@ -31,6 +31,17 @@ static int 	str_ascii(char *s1, char *s2)
 		return (1);
 }
 
+t_dir	*sort_file_in_dirs(t_dir *head)
+{
+	t_dir *tmp;
+
+	while (tmp)
+	{
+		tmp->info->next = sort_file_by_ascii(tmp->info->next);
+		tmp = tmp->next;
+	}
+	return (head);
+}
 
 t_info	*sort_file_by_ascii(t_info *info)
 {
@@ -38,7 +49,7 @@ t_info	*sort_file_by_ascii(t_info *info)
 	t_info *tmp = NULL;
 	t_info *curr = NULL;
 
-	while (info != NULL)
+	while (info)
 	{
 		tmp = info;
 		info = info->next;
@@ -50,11 +61,11 @@ t_info	*sort_file_by_ascii(t_info *info)
 		else
 		{
 			curr = head;
-			while (curr->next != NULL && str_ascii(tmp->name, curr->next->name))
+			while (curr->next && str_ascii(tmp->name, curr->next->name))
 				curr = curr->next;
 			tmp->next = curr->next;
 			curr->next = tmp;
 		}
 	}
-	return head;
+	return (head);
 }

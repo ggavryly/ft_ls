@@ -64,9 +64,10 @@ int		ft_printf(const char *format, ...);
 
 t_dir	*allocate_dir(t_dir *dir);
 t_info	*allocate_info(t_info *info);
-t_info	*sort_file_by_ascii(t_info *dir);
+t_info	*sort_file_by_ascii(t_info *info);
+t_dir	*sort_file_in_dirs(t_dir *head);
 t_dir	*new_dir(t_dir *curr, t_info *tmp_info, t_dir *dir);
-t_info	*new_node(t_info *info, t_info *tmp_info);
+void	new_node(t_dir *info, t_info *tmp_info);
 void	list_free(t_dir *dir);
 
 int		init_option(int ar, char **av, int	*flags);

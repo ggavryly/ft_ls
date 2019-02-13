@@ -59,45 +59,45 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ggavryly/CLionProjects/ft_ls
+CMAKE_SOURCE_DIR = /Users/ggavryly/Desktop/git_ft_ls/1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/ft_ls.dir
+# Target rules for target CMakeFiles/1.dir
 
 # All Build rule for target.
-CMakeFiles/ft_ls.dir/all:
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/depend
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target ft_ls"
-.PHONY : CMakeFiles/ft_ls.dir/all
+CMakeFiles/1.dir/all:
+	$(MAKE) -f CMakeFiles/1.dir/build.make CMakeFiles/1.dir/depend
+	$(MAKE) -f CMakeFiles/1.dir/build.make CMakeFiles/1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target 1"
+.PHONY : CMakeFiles/1.dir/all
 
 # Include target in all.
-all: CMakeFiles/ft_ls.dir/all
+all: CMakeFiles/1.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ft_ls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles 9
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ft_ls.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ggavryly/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/ft_ls.dir/rule
+CMakeFiles/1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/1.dir/rule
 
 # Convenience name for target.
-ft_ls: CMakeFiles/ft_ls.dir/rule
+1 : CMakeFiles/1.dir/rule
 
-.PHONY : ft_ls
-
-# clean rule for target.
-CMakeFiles/ft_ls.dir/clean:
-	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/clean
-.PHONY : CMakeFiles/ft_ls.dir/clean
+.PHONY : 1
 
 # clean rule for target.
-clean: CMakeFiles/ft_ls.dir/clean
+CMakeFiles/1.dir/clean:
+	$(MAKE) -f CMakeFiles/1.dir/build.make CMakeFiles/1.dir/clean
+.PHONY : CMakeFiles/1.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/1.dir/clean
 
 .PHONY : clean
 

@@ -77,7 +77,7 @@ static void		init_recursive(t_dir *dir)
 				dir = last;
 			}
 			else
-				new_node(dir->info, tmp_info);
+				new_node(dir, tmp_info);
 		}
 		closedir(dir->stream);
 		dir->stream = NULL;

@@ -25,6 +25,7 @@ int		main(int ar, char **av)
 	dir = allocate_dir(dir);
 	path_manage(dir, av, ar);
 	init_info(flags, dir);
+	dir->next = sort_file_in_dirs(dir->next);
 	dir = display_dirs(dir);
 	clock_t end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;

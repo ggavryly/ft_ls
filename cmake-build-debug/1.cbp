@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="ft_ls"/>
+		<Option title="1"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ft_ls">
-				<Option output="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/ft_ls" prefix_auto="0" extension_auto="0"/>
+			<Target title="1">
+				<Option output="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -52,14 +52,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ls"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 1"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ft_ls/fast">
-				<Option output="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/ft_ls" prefix_auto="0" extension_auto="0"/>
+			<Target title="1/fast">
+				<Option output="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -73,7 +73,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ls/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 1/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -81,28 +81,28 @@
 			</Target>
 		</Build>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/display.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/errors.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/init_info.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/list_job.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/main.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/parse_flags.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/path_manage.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/sort_list.c">
-			<Option target="ft_ls"/>
+			<Option target="1"/>
 		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
