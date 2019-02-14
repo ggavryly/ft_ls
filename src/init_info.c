@@ -12,26 +12,28 @@
 
 #include "../include/ft_ls.h"
 
-static void		init_default(t_dir *dir)
+static void		init_default(t_dir *dir, int *flags)
 {
 	t_info		*curr;
 	t_info		*prev;
 	t_dire		*tmp_dirent;
 
 	prev = NULL;
-	(dir->stream = opendir(dir->info->path)) ? NULL : error_procesing();
-	while ((tmp_dirent = readdir(dir->stream)))
+	if (((dir->stream = opendir(dir->info->path)) ? (1) : (0)))
 	{
-		if (tmp_dirent->d_name[0] == '.')
-			continue;
-		curr = (t_info *)malloc(sizeof(t_info));
-		ft_strcpy(curr->name, tmp_dirent->d_name);
-		if (prev)
-			prev->next = curr;
-		else if (!prev)
-			dir->info->next = curr;
-		prev = curr;
-		curr->next = NULL;
+		while ((tmp_dirent = readdir(dir->stream)))
+		{
+			if (tmp_dirent->d_name[0] == '.')
+				continue;
+			curr = (t_info *) malloc(sizeof(t_info));
+			ft_strcpy(curr->name, tmp_dirent->d_name);
+			if (prev)
+				prev->next = curr;
+			else if (!prev)
+				dir->info->next = curr;
+			prev = curr;
+			curr->next = NULL;
+		}
 	}
 }
 
@@ -52,52 +54,56 @@ static void		init_stat(t_info *tmp_inf, t_dire *tmp_dire)
 	tmp_inf->ctime = stat.st_ctimespec;
 }
 
-static void		init_recursive(t_dir *dir)
+static void		init_recursive(t_dir *dir, int *flags)
 {
 	t_dir	*head;
 	t_dir	*last;
 	t_dire	*tmp_dirent;
 	t_info	*tmp_info;
 
-	(dir->stream = opendir(dir->info->path)) ? NULL : error_procesing();
-	head = dir;
-	tmp_info = allocate_info(tmp_info);
-	last = head;
-	while (head->stream)
+	if (((dir->stream = opendir(dir->info->path)) ? (1) : (0)))
 	{
-		while ((tmp_dirent = readdir(dir->stream)))
+		head = dir;
+		tmp_info = allocate_info(tmp_info);
+		last = head;
+		while (head->stream)
 		{
-			if (tmp_dirent->d_name[0] == '.')
-				continue;
-			add_path(tmp_info, tmp_dirent, dir->info);
-			init_stat(tmp_info, tmp_dirent);
-			if (S_ISDIR(tmp_info->mode))
+			while ((tmp_dirent = readdir(dir->stream)))
 			{
-				last = new_dir(last, tmp_info, dir);
-				dir = last;
+				if (tmp_dirent->d_name[0] == '.')
+					continue;
+				add_path(tmp_info, tmp_dirent, dir->info);
+				init_stat(tmp_info, tmp_dirent);
+				if (S_ISDIR(tmp_info->mode))
+				{
+					last = new_dir(last, tmp_info, dir);
+					dir = last;
+					if (!last->stream)
+						break;
+				}
+				else
+					new_node(dir, tmp_info);
 			}
-			else
-				new_node(dir, tmp_info);
+			dir->stream ? closedir(dir->stream) : 1;
+			dir->stream = NULL;
+			while (!dir->stream && head->stream)
+				dir = dir->prev;
 		}
-		closedir(dir->stream);
-		dir->stream = NULL;
-		while (!dir->stream && head->stream)
-			dir = dir->prev;
 	}
-	free (tmp_info);
+	free(tmp_info);
 }
 
 
 t_dir			*init_info(int flags, t_dir *dir)
 {
-	if (!flags)
-		init_default(dir);
-	else
+	if (flags)
 	{
 		if (flags & RR)
-			init_recursive(dir);
+			init_recursive(dir, &flags);
 //		if (flags & L || flags & A && flags & R || flags & T)
 //			init_complex(dir);
 	}
+	if (!flags || flags & BIG)
+		init_default(dir, &flags);
 	return (dir);
 }

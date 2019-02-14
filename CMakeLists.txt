@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(1 C)
+project(ft_ls C)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -8,7 +8,7 @@ add_library(lib2 STATIC IMPORTED)
 set_property(TARGET lib1 PROPERTY IMPORTED_LOCATION /Users/ggavryly/Desktop/git_ft_ls/1/libft.a)
 set_property(TARGET lib2 PROPERTY IMPORTED_LOCATION /Users/ggavryly/Desktop/git_ft_ls/1/libftprintf.a)
 
-add_executable(1
+add_executable(ft_ls
         src/init_info.c
         src/errors.c
         src/path_manage.c
@@ -18,4 +18,4 @@ add_executable(1
         src/main.c
         src/sort_list.c)
 
-target_link_libraries(1 lib1 lib2)
+target_link_libraries(ft_ls lib1 lib2)

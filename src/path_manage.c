@@ -14,8 +14,10 @@
 
 t_dir	*allocate_dir(t_dir *dir)
 {
-	((dir = (t_dir *)malloc(sizeof(t_dir)))) ? (1) : error_procesing();
-	((dir->info = (t_info *)malloc(sizeof(t_info)))) ? (1) : error_procesing();
+	((dir = (t_dir *)malloc(sizeof(t_dir)))) ? (1) :
+	write(2, strerror(errno), ft_strlen(strerror(errno)));
+	((dir->info = (t_info *)malloc(sizeof(t_info)))) ? (1) :
+	write(2, strerror(errno), ft_strlen(strerror(errno)));
 	dir->stream = NULL;
 	dir->info->next = NULL;
 	dir->next = NULL;
@@ -23,9 +25,18 @@ t_dir	*allocate_dir(t_dir *dir)
 	return (dir);
 }
 
+t_err	*allocate_err(t_err *err)
+{
+	(err = (t_err *)malloc(sizeof(t_err))) ? (1) :
+	write(2, strerror(errno), ft_strlen(strerror(errno)));
+	err->next = NULL;
+	return (err);
+}
+
 t_info	*allocate_info(t_info *info)
 {
-	(info = (t_info *)malloc(sizeof(t_info))) ? (1) : error_procesing();
+	(info = (t_info *)malloc(sizeof(t_info))) ? (1) :
+	write(2, strerror(errno), ft_strlen(strerror(errno)));
 	info->next = NULL;
 	return (info);
 }
@@ -40,15 +51,15 @@ void	add_path(t_info *dst, t_dire *curr_dire, t_info *list)
 
 void	path_manage(t_dir *dir, char **av, int ar)
 {
-	if (!ar)
-	{
-		ft_strcpy(dir->info->name, ".");
-		ft_strcpy(dir->info->path, ".");
-	}
-	else if (*av)
+	if (*av)
 	{
 		ft_strcpy(dir->info->name, *av);
 		ft_strcpy(dir->info->path, *av);
+	}
+	else if (!ar || !(*av))
+	{
+		ft_strcpy(dir->info->name, ".");
+		ft_strcpy(dir->info->path, ".");
 	}
 }
 

@@ -19,6 +19,7 @@ void	list_free(t_dir *dir)
 
 	while (dir)
 	{
+		tmp1 = dir->info;
 		while (tmp1)
 		{
 			tmp1 = dir->info->next;
@@ -90,8 +91,8 @@ t_dir	*new_dir(t_dir *last, t_info *tmp_info, t_dir *dir)
 	add_info(dir, new_info);
 	ft_strcpy(new->info->name, tmp_info->name);
 	ft_strcpy(new->info->path, tmp_info->path);
-	(new->stream = opendir(new->info->path)) ? NULL : error_procesing();
 	last->next = new;
 	new->prev = last;
+	(new->stream = opendir(new->info->path)) ? 1 : open_error(&new);
 	return (new);
 }

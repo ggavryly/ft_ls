@@ -50,35 +50,7 @@ limits.h
 stdint.h
 -
 
-/Users/ggavryly/Desktop/git_ft_ls/1/src/display.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/errors.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/init_info.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/list_job.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
 /Users/ggavryly/Desktop/git_ft_ls/1/src/main.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/parse_flags.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/path_manage.c
-../include/ft_ls.h
-/Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
-
-/Users/ggavryly/Desktop/git_ft_ls/1/src/sort_list.c
 ../include/ft_ls.h
 /Users/ggavryly/Desktop/git_ft_ls/1/include/ft_ls.h
 
