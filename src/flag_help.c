@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-void 	total_put(t_info *dir)
+void		total_put(t_info *dir)
 {
 	intmax_t	block;
 	t_info		*walk;
@@ -30,7 +30,7 @@ void 	total_put(t_info *dir)
 	}
 }
 
-static char		file_type(int mode)
+static char	file_type(int mode)
 {
 	mode = (mode & S_IFMT);
 	if (S_ISREG(mode))
@@ -51,7 +51,7 @@ static char		file_type(int mode)
 		return ('-');
 }
 
-static char		list_xattr(char *path)
+static char	list_xattr(char *path)
 {
 	char	buf[256];
 
@@ -60,9 +60,9 @@ static char		list_xattr(char *path)
 	return (' ');
 }
 
-int				flag_l_chmod(t_info *dir)
+int			flag_l_chmod(t_info *dir)
 {
-	char 	chmod[13];
+	char	chmod[13];
 
 	chmod[0] = file_type(dir->mode);
 	chmod[1] = ((S_IRUSR & dir->mode) ? ('r') : ('-'));
@@ -88,3 +88,35 @@ int				flag_l_chmod(t_info *dir)
 	return (((chmod[0] == 'c' || chmod[0] == 'b') ? (1) : (0)));
 }
 
+void		init_recursive_help(t_dir **h, t_dir **l, t_info **t, t_dir **dir)
+{
+	*h = *dir;
+	*t = allocate_info(*t);
+	*l = *h;
+	(*dir)->stream = opendir((*dir)->info->path);
+}
+
+void		close_recursive_help(t_dir **d, t_dir **h)
+{
+	(*d)->stream ? closedir((*d)->stream) : 1;
+	(*d)->stream = NULL;
+	while (!(*d)->stream && (*h)->stream)
+		*d = (*d)->prev;
+}
+
+void		init_data(t_info **tmp_info, t_dire *tmp_dire, t_info **dir)
+{
+	add_path(*tmp_info, tmp_dire, *dir);
+	init_stat(*tmp_info, tmp_dire);
+}
+
+int		scip_dot(t_dire *tmp_dire, int flags)
+{
+	if (tmp_dire->d_name[0] == '.')
+	{
+		if (flags & A)
+			return (0);
+		return (1);
+	}
+	return (0);
+}

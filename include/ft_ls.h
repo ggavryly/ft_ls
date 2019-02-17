@@ -69,11 +69,13 @@ int		ft_printf(const char *format, ...);
 t_dir	*allocate_dir(t_dir *dir);
 t_info	*allocate_info(t_info *info);
 
-t_dir	*new_dir(t_dir *curr, t_info *tmp_info, t_dir *dir);
+t_dir	*new_dir(t_dir *curr, t_info *tmp_info, t_dir **dir);
 void	new_node(t_dir *info, t_info *tmp_info);
 void	list_free(t_dir *dir);
 t_info	*sort_file_by_ascii(t_info *info);
 t_info	*sort_file_by_time(t_info *info);
+t_dir	*sort_dirs_by_ascii(t_dir *info);
+t_dir	*sort(t_dir	*dir, int flags);
 t_info	*reverse_list(t_info *info);
 void	free_path(char **path_ar);
 
@@ -94,5 +96,11 @@ void	put_error(t_dir *dir);
 void		total_put(t_info *info);
 void		flag_l(t_info *info);
 int			flag_l_chmod(t_info *dir);
+void		init_stat(t_info *tmp_inf, t_dire *tmp_dire);
+
+void		init_recursive_help(t_dir **h, t_dir **l, t_info **t, t_dir **dir);
+void		close_recursive_help(t_dir **d, t_dir **h);
+void		init_data(t_info **tmp_info, t_dire *tmp_dire, t_info **dir);
+int			scip_dot(t_dire *tmp_dire, int flags);
 
 #endif

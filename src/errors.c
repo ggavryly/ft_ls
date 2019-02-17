@@ -23,7 +23,7 @@ int		open_error(t_dir **if_error)
 	char str[256];
 
 	(*if_error)->info->error_num = 1;
-	ft_strcpy(str,(*if_error)->info->name);
+	ft_strcpy(str, (*if_error)->info->name);
 	ft_strcpy((*if_error)->info->name, "ft_ls: ");
 	ft_strcat((*if_error)->info->name, str);
 	ft_strcat((*if_error)->info->name, ": ");
@@ -48,8 +48,7 @@ void	put_err(t_info *error, int mode)
 	}
 }
 
-
-t_info *del_error(t_info *del_me, t_info *prev, int mode, int *flag)
+t_info	*del_error(t_info *del_me, t_info *prev, int mode, int *flag)
 {
 	if (del_me->error_num == 2 && mode == 1)
 	{
@@ -66,11 +65,12 @@ t_info *del_error(t_info *del_me, t_info *prev, int mode, int *flag)
 		return (del_me);
 	return(prev);
 }
-t_info *error_check(t_info *args, int mode)
+
+t_info	*error_check(t_info *args, int mode)
 {
 	t_info	*prev;
 	t_info	*walk;
-	int 	flag;
+	int		flag;
 
 	flag = 0;
 	prev = NULL;
@@ -86,6 +86,6 @@ t_info *error_check(t_info *args, int mode)
 		walk = walk->next;
 	}
 	if (flag)
-		write(1,"\n", 1);
+		write(1, "\n", 1);
 	return (args);
 }

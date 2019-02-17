@@ -14,7 +14,7 @@
 
 int		main(int ar, char **av)
 {
-	int 		flags;
+	int			flags;
 	t_dir		*dir;
 	t_info		*args;
 	t_info		*head;
@@ -27,16 +27,12 @@ int		main(int ar, char **av)
 		dir = allocate_dir(dir);
 		path_manage(dir, args);
 		init_info(flags, dir);
-		if (flags & T)
-			dir->info->next = sort_file_by_time(dir->info->next);
-		else
-			dir->info->next = sort_file_by_ascii(dir->info->next);
+		sort(dir, flags);
 		if (flags & R)
 			dir->info->next = reverse_list(dir->info->next);
 		display(dir, flags);
 		list_free(dir);
 		args = args->next;
 	}
-	system("leaks ft_ls");
 	return (0);
 }

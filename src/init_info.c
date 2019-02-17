@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-static void		init_stat(t_info *tmp_inf, t_dire *tmp_dire)
+void		init_stat(t_info *tmp_inf, t_dire *tmp_dire)
 {
 	t_st	stat_tmp;
 
@@ -35,22 +35,22 @@ static void		init_default(t_dir *dir, int *flags)
 	t_info		*curr;
 	t_info		*head;
 	t_info		*prev;
-	t_dire		*tmp_dirent;
+	t_dire		*tmp_d;
 
 	head = dir->info;
 	prev = NULL;
 	curr = NULL;
 	if (((dir->stream = opendir(dir->info->path)) ? (1) : (0)))
 	{
-		while ((tmp_dirent = readdir(dir->stream)))
+		while ((tmp_d = readdir(dir->stream)))
 		{
-			if (tmp_dirent->d_name[0] == '.' && !(*flags & A))
+			if (tmp_d->d_name[0] == '.' && !(*flags & A))
 				continue;
 			curr = allocate_info(curr);
 			ft_strcpy(curr->path, dir->info->path);
 			ft_strcat(curr->path, "/");
-			ft_strcat(curr->path, tmp_dirent->d_name);
-			init_stat(curr, tmp_dirent);
+			ft_strcat(curr->path, tmp_d->d_name);
+			init_stat(curr, tmp_d);
 			if (prev)
 				prev->next = curr;
 			head->next = curr;
@@ -65,43 +65,28 @@ static void		init_recursive(t_dir *dir, int *flags)
 {
 	t_dir	*head;
 	t_dir	*last;
-	t_dire	*tmp_dirent;
-	t_info	*tmp_info;
+	t_dire	*d;
+	t_info	*tmp;
 
-	if (((dir->stream = opendir(dir->info->path)) ? (1) : (0)))
+	init_recursive_help(&head, &last, &tmp, &dir);
+	while (head->stream)
 	{
-		head = dir;
-		tmp_info = allocate_info(tmp_info);
-		last = head;
-		while (head->stream)
+		while ((d = readdir(dir->stream)))
 		{
-			while ((tmp_dirent = readdir(dir->stream)))
+			if (scip_dot(d, *flags))
+					continue;
+			init_data(&tmp, d, &dir->info);
+			if (S_ISDIR(tmp->mode) && ft_strcmp(d->d_name, ".") &&
+			ft_strcmp(d->d_name, ".."))
 			{
-				if (tmp_dirent->d_name[0] == '.')
-				{
-					if (!(*flags & A))
-						continue;
-				}
-				add_path(tmp_info, tmp_dirent, dir->info);
-				init_stat(tmp_info, tmp_dirent);
-				if (S_ISDIR(tmp_info->mode)
-				&& ft_strcmp(tmp_dirent->d_name, ".")
-				&& ft_strcmp(tmp_dirent->d_name, ".."))
-				{
-					last = new_dir(last, tmp_info, dir);
-					dir = last;
-					if (!last->stream)
-						break;
-				}
-				else
-					new_node(dir, tmp_info);
+				last = new_dir(last, tmp, &dir);
+				if (!last->stream)
+					break;
 			}
-			dir->stream ? closedir(dir->stream) : 1;
-			dir->stream = NULL;
-			while (!dir->stream && head->stream)
-				dir = dir->prev;
+			else
+				new_node(dir, tmp);
 		}
-		free(tmp_info);
+		close_recursive_help(&dir, &head);
 	}
 }
 

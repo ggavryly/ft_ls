@@ -80,7 +80,7 @@ static t_dir	*display_dirs_default(t_dir *dir, int flags)
 	return (dir);
 }
 
-t_dir	*display(t_dir *dir, int flags)
+t_dir			*display(t_dir *dir, int flags)
 {
 	if (flags & BIG)
 		dir = display_dirs_default(dir, flags);

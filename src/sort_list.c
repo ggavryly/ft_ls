@@ -58,6 +58,33 @@ t_info	*sort_file_by_ascii(t_info *info)
 	return (head);
 }
 
+t_dir	*sort_dirs_by_ascii(t_dir *info)
+{
+	t_dir *head = NULL;
+	t_dir *tmp = NULL;
+	t_dir *curr = NULL;
+
+	while (info)
+	{
+		tmp = info;
+		info = info->next;
+		if (head == NULL || !(str_ascii(tmp->info->path, head->info->path)))
+		{
+			tmp->next = head;
+			head = tmp;
+		}
+		else
+		{
+			curr = head;
+			while (curr->next && str_ascii(tmp->info->path, curr->next->info->path))
+				curr = curr->next;
+			tmp->next = curr->next;
+			curr->next = tmp;
+		}
+	}
+	return (head);
+}
+
 t_info	*sort_file_by_time(t_info *info)
 {
 	t_info *head = NULL;
@@ -105,3 +132,22 @@ t_info *reverse_list(t_info *info)
 	head = prev;
 	return (head);
 }
+
+t_dir	*sort(t_dir	*dir, int flags)
+{
+	t_dir	*walk;
+
+	dir->info->next = sort_file_by_ascii(dir->info->next);
+	walk = dir->next;
+	walk = sort_dirs_by_ascii(walk);
+	while (walk)
+	{
+		if (flags & T)
+			walk->info->next = sort_file_by_time(walk->info->next);
+		else
+			walk->info->next = sort_file_by_ascii(walk->info->next);
+		walk = walk->next;
+	}
+	return (dir);
+}
+
