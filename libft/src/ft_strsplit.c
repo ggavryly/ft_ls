@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static int	ft_delim(char const *s, char d)
+static unsigned int	ft_delim(char const *s, char d)
 {
-	size_t		k;
-	size_t		i;
+	unsigned int	k;
+	unsigned int	i;
 
 	if (s)
 	{
@@ -37,9 +37,9 @@ static int	ft_delim(char const *s, char d)
 	return (0);
 }
 
-static int	ft_strln(const char *s, char d)
+static unsigned int	ft_strln(const char *s, char d)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i] != d && s[i])
@@ -51,15 +51,15 @@ static int	ft_strln(const char *s, char d)
 
 char		**ft_strsplit(char const *s, char c)
 {
-	size_t		i;
-	size_t		j;
-	size_t		k;
+	unsigned int i;
+	unsigned int j;
+	unsigned int k;
 	char		**res;
 
-	j = 0;
+	res = NULL;
 	i = 0;
 	k = ft_delim(s, c);
-	if (s && (res = malloc(sizeof(char *) * k + 1)))
+	if (s && (res = (char **)malloc(sizeof(char *) * k + 1)))
 	{
 		res[k] = NULL;
 		k = 0;

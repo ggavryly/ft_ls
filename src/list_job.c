@@ -53,6 +53,7 @@ void	new_node(t_dir *dir,t_info *tmp_info)
 	new = allocate_info(new);
 	ft_strcpy(new->name, tmp_info->name);
 	ft_strcpy(new->path, tmp_info->path);
+	new->blocks = tmp_info->blocks;
 	new->mode = tmp_info->mode;
 	new->nlink = tmp_info->nlink;
 	new->uid = tmp_info->uid;
@@ -69,6 +70,7 @@ void	info_copy(t_info *dst, t_info *tmp_info)
 {
 	ft_strcpy(dst->path, tmp_info->path);
 	ft_strcpy(dst->name, tmp_info->name);
+	dst->blocks = tmp_info->blocks;
 	dst->mode = tmp_info->mode;
 	dst->nlink = tmp_info->nlink;
 	dst->uid = tmp_info->uid;

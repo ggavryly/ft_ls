@@ -9,6 +9,14 @@ CMakeFiles/ft_ls.dir/src/errors.c.o: ../include/ft_ls.h
 CMakeFiles/ft_ls.dir/src/errors.c.o: ../libft/include/libft.h
 CMakeFiles/ft_ls.dir/src/errors.c.o: ../src/errors.c
 
+CMakeFiles/ft_ls.dir/src/flag_help.c.o: ../include/ft_ls.h
+CMakeFiles/ft_ls.dir/src/flag_help.c.o: ../libft/include/libft.h
+CMakeFiles/ft_ls.dir/src/flag_help.c.o: ../src/flag_help.c
+
+CMakeFiles/ft_ls.dir/src/flag_l.c.o: ../include/ft_ls.h
+CMakeFiles/ft_ls.dir/src/flag_l.c.o: ../libft/include/libft.h
+CMakeFiles/ft_ls.dir/src/flag_l.c.o: ../src/flag_l.c
+
 CMakeFiles/ft_ls.dir/src/init_info.c.o: ../include/ft_ls.h
 CMakeFiles/ft_ls.dir/src/init_info.c.o: ../libft/include/libft.h
 CMakeFiles/ft_ls.dir/src/init_info.c.o: ../src/init_info.c

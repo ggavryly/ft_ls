@@ -6,6 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/ggavryly/Desktop/git_ft_ls/1/src/display.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/display.c.o"
   "/Users/ggavryly/Desktop/git_ft_ls/1/src/errors.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/errors.c.o"
+  "/Users/ggavryly/Desktop/git_ft_ls/1/src/flag_help.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/flag_help.c.o"
+  "/Users/ggavryly/Desktop/git_ft_ls/1/src/flag_l.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/flag_l.c.o"
   "/Users/ggavryly/Desktop/git_ft_ls/1/src/init_info.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/init_info.c.o"
   "/Users/ggavryly/Desktop/git_ft_ls/1/src/list_job.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/list_job.c.o"
   "/Users/ggavryly/Desktop/git_ft_ls/1/src/main.c" "/Users/ggavryly/Desktop/git_ft_ls/1/cmake-build-debug/CMakeFiles/ft_ls.dir/src/main.c.o"

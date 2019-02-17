@@ -25,14 +25,6 @@ t_dir	*allocate_dir(t_dir *dir)
 	return (dir);
 }
 
-t_err	*allocate_err(t_err *err)
-{
-	(err = (t_err *)malloc(sizeof(t_err))) ? (1) :
-	write(2, strerror(errno), ft_strlen(strerror(errno)));
-	err->next = NULL;
-	return (err);
-}
-
 t_info	*allocate_info(t_info *info)
 {
 	(info = (t_info *)malloc(sizeof(t_info))) ? (1) :
@@ -49,17 +41,18 @@ void	add_path(t_info *dst, t_dire *curr_dire, t_info *list)
 	ft_strcat(dst->path, curr_dire->d_name);
 }
 
-void	path_manage(t_dir *dir, char **av, int ar)
+void	path_manage(t_dir *dir, t_info *curr_ar)
 {
-	if (*av)
-	{
-		ft_strcpy(dir->info->name, *av);
-		ft_strcpy(dir->info->path, *av);
-	}
-	else if (!ar || !(*av))
-	{
-		ft_strcpy(dir->info->name, ".");
-		ft_strcpy(dir->info->path, ".");
-	}
+	ft_strcpy(dir->info->path, curr_ar->path);
+	ft_strcpy(dir->info->name, curr_ar->path);
 }
 
+void	free_path(char **path_ar)
+{
+	int 	i;
+
+	i = 0;
+	while (path_ar[i])
+		free(path_ar[i++]);
+	free(path_ar);
+}

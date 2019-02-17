@@ -15,13 +15,14 @@
 void	put_error(t_dir *dir)
 {
 	ft_putstr_fd(dir->info->name, 2);
+	ft_putstr_fd("\n", 2);
 }
 
 int		open_error(t_dir **if_error)
 {
 	char str[256];
 
-	(*if_error)->info->error = 1;
+	(*if_error)->info->error_num = 1;
 	ft_strcpy(str,(*if_error)->info->name);
 	ft_strcpy((*if_error)->info->name, "ft_ls: ");
 	ft_strcat((*if_error)->info->name, str);
@@ -30,25 +31,61 @@ int		open_error(t_dir **if_error)
 	return (0);
 }
 
-//int		open_start(char **av)
-//{
-//	t_err *new;
-//	t_err *tmp;
-//
-//	new = NULL;
-//	new = allocate_err(new);
-//	ft_strcpy(new->err_message, "ft_ls: ");
-//	ft_strcat(new->err_message, (*if_error)->info->name);
-//	ft_strcat(new->err_message, ": ");
-//	ft_strcat(new->err_message, strerror(errno));
-//	free((*if_error)->info);
-//	free(*if_error);
-//	(*if_error) = NULL;
-//	while (*err_head)
-//	{
-//		tmp = (*err_head);
-//		(*err_head) = (*err_head)->next;
-//	}
-//	tmp->next = new;
-//	return (0);
-//}
+void	put_err(t_info *error, int mode)
+{
+	if (error->error_num == 2 && mode == 1)
+	{
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(error->path, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(strerror(error->error_num), 2);
+		ft_putstr_fd("\n", 2);
+	}
+	else if (error->error_num == 20 && mode == 2)
+	{
+		ft_putstr(error->path);
+		ft_putstr("\n");
+	}
+}
+
+
+t_info *del_error(t_info *del_me, t_info *prev, int mode, int *flag)
+{
+	if (del_me->error_num == 2 && mode == 1)
+	{
+		prev->next = del_me->next;
+		free(del_me);
+	}
+	else if (del_me->error_num == 20 && mode == 2)
+	{
+		*flag = 1;
+		prev->next = del_me->next;
+		free(del_me);
+	}
+	else
+		return (del_me);
+	return(prev);
+}
+t_info *error_check(t_info *args, int mode)
+{
+	t_info	*prev;
+	t_info	*walk;
+	int 	flag;
+
+	flag = 0;
+	prev = NULL;
+	walk = args;
+	while (walk)
+	{
+		if (walk->error_num)
+		{
+			put_err(walk, mode);
+			walk = del_error(walk, prev, mode, &flag);
+		}
+		prev = walk;
+		walk = walk->next;
+	}
+	if (flag)
+		write(1,"\n", 1);
+	return (args);
+}

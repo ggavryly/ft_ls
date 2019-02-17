@@ -15,27 +15,28 @@
 int		main(int ar, char **av)
 {
 	int 		flags;
-	int 		tmp;
 	t_dir		*dir;
-	t_dir		*prev;
+	t_info		*args;
+	t_info		*head;
 
-	prev = NULL;
-	tmp	= init_option(ar, av, &flags);
-	ar -= tmp + 1;
-	av += tmp + 1;
-	if (ar > 1)
-		flags |= BIG;
-	if (ar == 0)
-		ar = 1;
-	while (ar)
+	dir = NULL;
+	head = init_start(ar, av, &flags, args);
+	args = head->next;
+	while (args)
 	{
 		dir = allocate_dir(dir);
-		path_manage(dir, av++, ar--);
+		path_manage(dir, args);
 		init_info(flags, dir);
-		add_to_list_dir(dir, prev);
-		prev = dir;
+		if (flags & T)
+			dir->info->next = sort_file_by_time(dir->info->next);
+		else
+			dir->info->next = sort_file_by_ascii(dir->info->next);
+		if (flags & R)
+			dir->info->next = reverse_list(dir->info->next);
+		display(dir, flags);
+		list_free(dir);
+		args = args->next;
 	}
-	display(prev, flags);
-	list_free(prev);
+	system("leaks ft_ls");
 	return (0);
 }

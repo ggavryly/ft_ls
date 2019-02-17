@@ -86,6 +86,12 @@
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/errors.c">
 			<Option target="ft_ls"/>
 		</Unit>
+		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/flag_help.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/flag_l.c">
+			<Option target="ft_ls"/>
+		</Unit>
 		<Unit filename="/Users/ggavryly/Desktop/git_ft_ls/1/src/init_info.c">
 			<Option target="ft_ls"/>
 		</Unit>

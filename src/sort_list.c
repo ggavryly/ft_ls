@@ -31,34 +31,7 @@ static int 	str_ascii(char *s1, char *s2)
 		return (1);
 }
 
-static t_dir	*sort_dirs(t_dir *info)
-{
-	t_dir *tmp = NULL;
-	t_dir *curr = NULL;
-	t_dir *head = NULL;
-
-	while (info)
-	{
-		tmp = info;
-		info = info->next;
-		if (head == NULL || !(str_ascii(tmp->info->path, head->info->path)))
-		{
-			tmp->next = head;
-			head = tmp;
-		}
-		else
-		{
-			curr = head;
-			while (curr->next && str_ascii(tmp->info->path, curr->next->info->path))
-				curr = curr->next;
-			tmp->next = curr->next;
-			curr->next = tmp;
-		}
-	}
-	return (head);
-}
-
-static t_info	*sort_file_by_ascii(t_info *info)
+t_info	*sort_file_by_ascii(t_info *info)
 {
 	t_info *head = NULL;
 	t_info *tmp = NULL;
@@ -85,33 +58,50 @@ static t_info	*sort_file_by_ascii(t_info *info)
 	return (head);
 }
 
-t_dir	*sort(t_dir *head)
+t_info	*sort_file_by_time(t_info *info)
 {
-	t_dir *tmp;
+	t_info *head = NULL;
+	t_info *tmp = NULL;
+	t_info *curr = NULL;
 
-	head = sort_dirs(head);
-	tmp = head;
-	while (tmp)
+	while (info)
 	{
-		tmp->info->next = sort_file_by_ascii(tmp->info->next);
-		tmp = tmp->next;
+		tmp = info;
+		info = info->next;
+		if (head == NULL || tmp->mtime.tv_sec > head->mtime.tv_sec)
+		{
+			tmp->next = head;
+			head = tmp;
+		}
+		else
+		{
+			curr = head;
+			while (curr->next && tmp->mtime.tv_sec <= curr->next->mtime.tv_sec)
+				curr = curr->next;
+			tmp->next = curr->next;
+			curr->next = tmp;
+		}
 	}
 	return (head);
 }
 
-void	add_to_list_dir(t_dir *curr, t_dir *prev)
+t_info *reverse_list(t_info *info)
 {
-	t_dir *last;
+	t_info	*head;
+	t_info	*curr;
+	t_info	*prev;
+	t_info	*next;
 
-	last = NULL;
-	while (prev)
+	head = info;
+	curr = head;
+	prev = NULL;
+	while(curr)
 	{
-		last = prev;
-		prev = prev->next;
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
 	}
-	if (last)
-	{
-		last->next = curr;
-		curr->prev = last;
-	}
+	head = prev;
+	return (head);
 }

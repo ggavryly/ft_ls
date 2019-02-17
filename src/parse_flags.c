@@ -35,6 +35,13 @@ int		init_option(int ar, char **av, int *flags)
 	i = 1;
 	while (i < ar && av[i][0] == '-' && av[i][1])
 	{
+		if (av[i][1] != 'l' && av[i][1] != 'R' && av[i][1] != 'a'
+		&& av[i][1] != 'r' && av[i][1] != 't')
+		{
+			ft_printf("ft_ls: illegal option : -- %c\n"
+			 "usage: ft_ls [-lRart] [file ...]\n", av[i][1]);
+			exit(0);
+		}
 		(av[i][1] == 'l') ? *flags |= L : 0;
 		(av[i][1] == 'R') ? *flags |= RR : 0;
 		(av[i][1] == 'a') ? *flags |= A : 0;
@@ -45,4 +52,79 @@ int		init_option(int ar, char **av, int *flags)
 		i++;
 	}
 	return (i - 1);
+}
+
+char 	**init_args(char **av, char **path_ar, int ar)
+{
+	char	**str_ar;
+	int		i;
+
+	i = 0;
+	if (ar)
+	{
+		str_ar = (char **) malloc((sizeof(char *) * ar + 1));
+		str_ar[ar] = NULL;
+		while (*av)
+		{
+			str_ar[i] = (char *)malloc((sizeof(char) * ft_strlen(*av) + 1));
+			str_ar[i][ft_strlen(*av)] = '\0';
+			ft_strcpy(str_ar[i++], *av++);
+		}
+	}
+	else
+	{
+		str_ar = (char **) malloc((sizeof(char *) * 2));
+		str_ar[0] = (char *)malloc(sizeof(char) * 2);
+		ft_strcpy(str_ar[0], ".");
+		str_ar[1] = NULL;
+	}
+	return (str_ar);
+}
+
+t_info	*test_args(t_info *args, char **path_ar)
+{
+	t_info		*curr;
+	t_info		*prev;
+	DIR			*tmp_stream;
+
+	prev = NULL;
+	curr = NULL;
+	args = allocate_info(args);
+	args->error_num = 0;
+	while (*path_ar)
+	{
+		curr = allocate_info(curr);
+		if(!(tmp_stream = opendir(*path_ar)))
+			curr->error_num = errno;
+		ft_strcpy(curr->path, *path_ar);
+		if (prev)
+			prev->next = curr;
+		else
+			args->next = curr;
+		prev = curr;
+		path_ar++;
+		if (tmp_stream)
+			closedir(tmp_stream);
+	}
+	return (args);
+}
+
+t_info	*init_start(int ar, char **av, int *flags, t_info *args)
+{
+	int		tmp;
+	char	**path_ar;
+
+	path_ar = NULL;
+	tmp	= init_option(ar, av, flags);
+	ar -= tmp + 1;
+	av += tmp + 1;
+	path_ar = init_args(av, path_ar, ar);
+	args = test_args(args, path_ar);
+	args = sort_file_by_ascii(args);
+	if (args->next->next)
+		(*flags) |= BIG;
+	args = error_check(args, 1);
+	args = error_check(args, 2);
+	free_path(path_ar);
+	return (args);
 }

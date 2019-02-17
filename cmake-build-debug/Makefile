@@ -177,6 +177,60 @@ src/errors.c.s:
 	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/errors.c.s
 .PHONY : src/errors.c.s
 
+src/flag_help.o: src/flag_help.c.o
+
+.PHONY : src/flag_help.o
+
+# target to build an object file
+src/flag_help.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_help.c.o
+.PHONY : src/flag_help.c.o
+
+src/flag_help.i: src/flag_help.c.i
+
+.PHONY : src/flag_help.i
+
+# target to preprocess a source file
+src/flag_help.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_help.c.i
+.PHONY : src/flag_help.c.i
+
+src/flag_help.s: src/flag_help.c.s
+
+.PHONY : src/flag_help.s
+
+# target to generate assembly for a file
+src/flag_help.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_help.c.s
+.PHONY : src/flag_help.c.s
+
+src/flag_l.o: src/flag_l.c.o
+
+.PHONY : src/flag_l.o
+
+# target to build an object file
+src/flag_l.c.o:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_l.c.o
+.PHONY : src/flag_l.c.o
+
+src/flag_l.i: src/flag_l.c.i
+
+.PHONY : src/flag_l.i
+
+# target to preprocess a source file
+src/flag_l.c.i:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_l.c.i
+.PHONY : src/flag_l.c.i
+
+src/flag_l.s: src/flag_l.c.s
+
+.PHONY : src/flag_l.s
+
+# target to generate assembly for a file
+src/flag_l.c.s:
+	$(MAKE) -f CMakeFiles/ft_ls.dir/build.make CMakeFiles/ft_ls.dir/src/flag_l.c.s
+.PHONY : src/flag_l.c.s
+
 src/init_info.o: src/init_info.c.o
 
 .PHONY : src/init_info.o
@@ -354,6 +408,12 @@ help:
 	@echo "... src/errors.o"
 	@echo "... src/errors.i"
 	@echo "... src/errors.s"
+	@echo "... src/flag_help.o"
+	@echo "... src/flag_help.i"
+	@echo "... src/flag_help.s"
+	@echo "... src/flag_l.o"
+	@echo "... src/flag_l.i"
+	@echo "... src/flag_l.s"
 	@echo "... src/init_info.o"
 	@echo "... src/init_info.i"
 	@echo "... src/init_info.s"

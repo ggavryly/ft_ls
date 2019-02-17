@@ -16,6 +16,8 @@ add_executable(ft_ls
         src/display.c
         src/parse_flags.c
         src/main.c
-        src/sort_list.c)
+        src/sort_list.c
+        src/flag_help.c
+        src/flag_l.c)
 
 target_link_libraries(ft_ls lib1 lib2)
