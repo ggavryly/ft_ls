@@ -46,7 +46,7 @@ void	add_info(t_dir *last, t_info *add_info)
 	last_info->next = add_info;
 }
 
-void	new_node(t_dir *dir,t_info *tmp_info)
+void	new_node(t_dir *dir, t_info *tmp_info)
 {
 	t_info *new;
 

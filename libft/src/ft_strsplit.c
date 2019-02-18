@@ -49,12 +49,12 @@ static unsigned int	ft_strln(const char *s, char d)
 	return (i);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char				**ft_strsplit(char const *s, char c)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int k;
-	char		**res;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
+	char			**res;
 
 	res = NULL;
 	i = 0;

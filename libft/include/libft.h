@@ -158,7 +158,7 @@ int					ft_sqrt(int nb);
 
 int					*ft_range(int min, int max);
 
-int 				get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 char				*file_to_line(const char *name);
 

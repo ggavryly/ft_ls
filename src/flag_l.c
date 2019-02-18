@@ -68,7 +68,7 @@ void	flag_l(t_info *info)
 		k = getpwuid(info->uid);
 		d = getgrgid(info->gid);
 		ft_printf("%3d %-10s %-10s ", info->nlink, k->pw_name,
-				  d->gr_name);
+				d->gr_name);
 		if (flag == 1)
 			flag_l_cbl(info, 1);
 		else if (flag == 0 || flag == 2)

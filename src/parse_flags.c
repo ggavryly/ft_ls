@@ -28,7 +28,7 @@ static	void	split_option(int i, char **av, int *flags)
 	}
 }
 
-int		init_option(int ar, char **av, int *flags)
+int				init_option(int ar, char **av, int *flags)
 {
 	int i;
 
@@ -38,8 +38,9 @@ int		init_option(int ar, char **av, int *flags)
 		if (av[i][1] != 'l' && av[i][1] != 'R' && av[i][1] != 'a'
 		&& av[i][1] != 'r' && av[i][1] != 't')
 		{
-			ft_printf("ft_ls: illegal option : -- %c\n"
-			 "usage: ft_ls [-lRart] [file ...]\n", av[i][1]);
+			ft_putstr("ft_ls: illegal option : -- ");
+			ft_putchar(av[i][1]);
+			ft_putstr("\nusage: ft_ls [-lRart] [file ...]\n");
 			exit(0);
 		}
 		(av[i][1] == 'l') ? *flags |= L : 0;
@@ -54,7 +55,7 @@ int		init_option(int ar, char **av, int *flags)
 	return (i - 1);
 }
 
-char 	**init_args(char **av, char **path_ar, int ar)
+char			**init_args(char **av, int ar)
 {
 	char	**str_ar;
 	int		i;
@@ -62,7 +63,7 @@ char 	**init_args(char **av, char **path_ar, int ar)
 	i = 0;
 	if (ar)
 	{
-		str_ar = (char **) malloc((sizeof(char *) * ar + 1));
+		str_ar = (char **)malloc((sizeof(char *) * ar + 1));
 		str_ar[ar] = NULL;
 		while (*av)
 		{
@@ -73,7 +74,7 @@ char 	**init_args(char **av, char **path_ar, int ar)
 	}
 	else
 	{
-		str_ar = (char **) malloc((sizeof(char *) * 2));
+		str_ar = (char **)malloc((sizeof(char *) * 2));
 		str_ar[0] = (char *)malloc(sizeof(char) * 2);
 		ft_strcpy(str_ar[0], ".");
 		str_ar[1] = NULL;
@@ -81,7 +82,7 @@ char 	**init_args(char **av, char **path_ar, int ar)
 	return (str_ar);
 }
 
-t_info	*test_args(t_info *args, char **path_ar)
+t_info			*test_args(t_info *args, char **path_ar)
 {
 	t_info		*curr;
 	t_info		*prev;
@@ -94,7 +95,7 @@ t_info	*test_args(t_info *args, char **path_ar)
 	while (*path_ar)
 	{
 		curr = allocate_info(curr);
-		if(!(tmp_stream = opendir(*path_ar)))
+		if (!(tmp_stream = opendir(*path_ar)))
 			curr->error_num = errno;
 		ft_strcpy(curr->path, *path_ar);
 		if (prev)
@@ -109,16 +110,15 @@ t_info	*test_args(t_info *args, char **path_ar)
 	return (args);
 }
 
-t_info	*init_start(int ar, char **av, int *flags, t_info *args)
+t_info			*init_start(int ar, char **av, int *flags, t_info *args)
 {
 	int		tmp;
 	char	**path_ar;
 
-	path_ar = NULL;
-	tmp	= init_option(ar, av, flags);
+	tmp = init_option(ar, av, flags);
 	ar -= tmp + 1;
 	av += tmp + 1;
-	path_ar = init_args(av, path_ar, ar);
+	path_ar = init_args(av, ar);
 	args = test_args(args, path_ar);
 	args = sort_file_by_ascii(args);
 	if (args->next->next)

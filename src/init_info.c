@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-void		init_stat(t_info *tmp_inf, t_dire *tmp_dire)
+void			init_stat(t_info *tmp_inf, t_dire *tmp_dire)
 {
 	t_st	stat_tmp;
 
@@ -40,25 +40,23 @@ static void		init_default(t_dir *dir, int *flags)
 	head = dir->info;
 	prev = NULL;
 	curr = NULL;
-	if (((dir->stream = opendir(dir->info->path)) ? (1) : (0)))
+	dir->stream = opendir(dir->info->path);
+	while ((tmp_d = readdir(dir->stream)))
 	{
-		while ((tmp_d = readdir(dir->stream)))
-		{
-			if (tmp_d->d_name[0] == '.' && !(*flags & A))
-				continue;
-			curr = allocate_info(curr);
-			ft_strcpy(curr->path, dir->info->path);
-			ft_strcat(curr->path, "/");
-			ft_strcat(curr->path, tmp_d->d_name);
-			init_stat(curr, tmp_d);
-			if (prev)
-				prev->next = curr;
-			head->next = curr;
-			head = head->next;
-			prev = curr;
-		}
-		closedir(dir->stream);
+		if (tmp_d->d_name[0] == '.' && !(*flags & A))
+			continue;
+		curr = allocate_info(curr);
+		ft_strcpy(curr->path, dir->info->path);
+		ft_strcat(curr->path, "/");
+		ft_strcat(curr->path, tmp_d->d_name);
+		init_stat(curr, tmp_d);
+		if (prev)
+			prev->next = curr;
+		head->next = curr;
+		head = head->next;
+		prev = curr;
 	}
+	closedir(dir->stream);
 }
 
 static void		init_recursive(t_dir *dir, int *flags)
@@ -68,20 +66,20 @@ static void		init_recursive(t_dir *dir, int *flags)
 	t_dire	*d;
 	t_info	*tmp;
 
-	init_recursive_help(&head, &last, &tmp, &dir);
+	recursive(&head, &last, &tmp, &dir);
 	while (head->stream)
 	{
 		while ((d = readdir(dir->stream)))
 		{
 			if (scip_dot(d, *flags))
-					continue;
+				continue ;
 			init_data(&tmp, d, &dir->info);
 			if (S_ISDIR(tmp->mode) && ft_strcmp(d->d_name, ".") &&
 			ft_strcmp(d->d_name, ".."))
 			{
 				last = new_dir(last, tmp, &dir);
 				if (!last->stream)
-					break;
+					break ;
 			}
 			else
 				new_node(dir, tmp);

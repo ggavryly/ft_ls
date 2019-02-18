@@ -63,7 +63,7 @@ t_info	*del_error(t_info *del_me, t_info *prev, int mode, int *flag)
 	}
 	else
 		return (del_me);
-	return(prev);
+	return (prev);
 }
 
 t_info	*error_check(t_info *args, int mode)

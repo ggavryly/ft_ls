@@ -33,7 +33,6 @@ t_info	*allocate_info(t_info *info)
 	return (info);
 }
 
-
 void	add_path(t_info *dst, t_dire *curr_dire, t_info *list)
 {
 	ft_strcpy(dst->path, list->path);
@@ -49,7 +48,7 @@ void	path_manage(t_dir *dir, t_info *curr_ar)
 
 void	free_path(char **path_ar)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (path_ar[i])

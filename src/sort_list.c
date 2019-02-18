@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "../include/ft_ls.h"
+#include "../include/ft_ls.h"
 
-static int 	str_ascii(char *s1, char *s2)
+static int	str_ascii(const char *s1, const char *s2)
 {
 	int i;
 
@@ -31,12 +31,13 @@ static int 	str_ascii(char *s1, char *s2)
 		return (1);
 }
 
-t_info	*sort_file_by_ascii(t_info *info)
+t_info		*sort_file_by_ascii(t_info *info)
 {
-	t_info *head = NULL;
-	t_info *tmp = NULL;
-	t_info *curr = NULL;
+	t_info	*head;
+	t_info	*tmp;
+	t_info	*curr;
 
+	head = NULL;
 	while (info)
 	{
 		tmp = info;
@@ -58,17 +59,18 @@ t_info	*sort_file_by_ascii(t_info *info)
 	return (head);
 }
 
-t_dir	*sort_dirs_by_ascii(t_dir *info)
+t_dir		*sort_dirs_by_ascii(t_dir *info)
 {
-	t_dir *head = NULL;
-	t_dir *tmp = NULL;
-	t_dir *curr = NULL;
+	t_dir *head;
+	t_dir *tmp;
+	t_dir *curr;
 
+	head = NULL;
 	while (info)
 	{
 		tmp = info;
 		info = info->next;
-		if (head == NULL || !(str_ascii(tmp->info->path, head->info->path)))
+		if (head == NULL || !str_ascii(tmp->info->path, head->info->path))
 		{
 			tmp->next = head;
 			head = tmp;
@@ -76,7 +78,8 @@ t_dir	*sort_dirs_by_ascii(t_dir *info)
 		else
 		{
 			curr = head;
-			while (curr->next && str_ascii(tmp->info->path, curr->next->info->path))
+			while (curr->next && str_ascii(tmp->info->path,
+					curr->next->info->path))
 				curr = curr->next;
 			tmp->next = curr->next;
 			curr->next = tmp;
@@ -85,12 +88,13 @@ t_dir	*sort_dirs_by_ascii(t_dir *info)
 	return (head);
 }
 
-t_info	*sort_file_by_time(t_info *info)
+t_info		*sort_file_by_time(t_info *info)
 {
-	t_info *head = NULL;
-	t_info *tmp = NULL;
-	t_info *curr = NULL;
+	t_info *head;
+	t_info *tmp;
+	t_info *curr;
 
+	head = NULL;
 	while (info)
 	{
 		tmp = info;
@@ -112,28 +116,7 @@ t_info	*sort_file_by_time(t_info *info)
 	return (head);
 }
 
-t_info *reverse_list(t_info *info)
-{
-	t_info	*head;
-	t_info	*curr;
-	t_info	*prev;
-	t_info	*next;
-
-	head = info;
-	curr = head;
-	prev = NULL;
-	while(curr)
-	{
-		next = curr->next;
-		curr->next = prev;
-		prev = curr;
-		curr = next;
-	}
-	head = prev;
-	return (head);
-}
-
-t_dir	*sort(t_dir	*dir, int flags)
+t_dir		*sort(t_dir *dir, int flags)
 {
 	t_dir	*walk;
 
@@ -150,4 +133,3 @@ t_dir	*sort(t_dir	*dir, int flags)
 	}
 	return (dir);
 }
-

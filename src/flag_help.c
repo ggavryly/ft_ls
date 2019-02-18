@@ -12,12 +12,20 @@
 
 #include "../include/ft_ls.h"
 
+blkcnt_t	dot_size(t_info *dir)
+{
+	t_st	stat_tmp;
+
+	lstat(dir->path, &stat_tmp);
+	return (stat_tmp.st_blocks);
+}
+
 void		total_put(t_info *dir)
 {
 	intmax_t	block;
 	t_info		*walk;
 
-	block = 0;
+	block = dot_size(dir);
 	if (dir)
 	{
 		walk = dir->next;
@@ -53,10 +61,12 @@ static char	file_type(int mode)
 
 static char	list_xattr(char *path)
 {
-	char	buf[256];
+	char		buf[256];
 
 	if (listxattr(path, buf, 256, XATTR_NOFOLLOW) > 0)
 		return ('@');
+	if (acl_get_link_np(path, ACL_TYPE_EXTENDED))
+		return ('+');
 	return (' ');
 }
 
@@ -86,37 +96,4 @@ int			flag_l_chmod(t_info *dir)
 	if (chmod[0] == 'l')
 		return (2);
 	return (((chmod[0] == 'c' || chmod[0] == 'b') ? (1) : (0)));
-}
-
-void		init_recursive_help(t_dir **h, t_dir **l, t_info **t, t_dir **dir)
-{
-	*h = *dir;
-	*t = allocate_info(*t);
-	*l = *h;
-	(*dir)->stream = opendir((*dir)->info->path);
-}
-
-void		close_recursive_help(t_dir **d, t_dir **h)
-{
-	(*d)->stream ? closedir((*d)->stream) : 1;
-	(*d)->stream = NULL;
-	while (!(*d)->stream && (*h)->stream)
-		*d = (*d)->prev;
-}
-
-void		init_data(t_info **tmp_info, t_dire *tmp_dire, t_info **dir)
-{
-	add_path(*tmp_info, tmp_dire, *dir);
-	init_stat(*tmp_info, tmp_dire);
-}
-
-int		scip_dot(t_dire *tmp_dire, int flags)
-{
-	if (tmp_dire->d_name[0] == '.')
-	{
-		if (flags & A)
-			return (0);
-		return (1);
-	}
-	return (0);
 }
