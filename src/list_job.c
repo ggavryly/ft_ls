@@ -83,23 +83,19 @@ void	info_copy(t_info *dst, t_info *tmp_info)
 	dst->ctime = tmp_info->ctime;
 }
 
-t_dir	*new_dir(t_dir *last, t_info *tmp_info, t_dir **dir)
+t_dir	*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head)
 {
 	t_dir	*new;
-	t_info	*new_info;
 
-	if (!(ft_strcmp(tmp_info->name, ".") && ft_strcmp(tmp_info->name, "..")))
-		return (last);
+	new = NULL;
+	if (!(ft_strcmp(dir_info->name, ".") && ft_strcmp(dir_info->name, "..")))
+		return (NULL);
 	new = allocate_dir(new);
-	new_info = allocate_info(new_info);
-	info_copy(new_info, tmp_info);
-	add_info(*dir, new_info);
-	ft_strcpy(new->info->name, tmp_info->name);
-	ft_strcpy(new->info->path, tmp_info->path);
-	new->info->mtime = tmp_info->mtime;
-	last->next = new;
-	new->prev = last;
-	(new->stream = opendir(new->info->path)) ? 1 : open_error(&new);
-	*dir = new;
+	info_copy(new->info, dir_info);
+	new->sub_u = sub_u;
+	if (sub_d)
+		sub_d->next = new;
+	else
+		*head = new;
 	return (new);
 }

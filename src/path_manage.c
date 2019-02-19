@@ -19,9 +19,10 @@ t_dir	*allocate_dir(t_dir *dir)
 	((dir->info = (t_info *)malloc(sizeof(t_info)))) ? (1) :
 	write(2, strerror(errno), ft_strlen(strerror(errno)));
 	dir->stream = NULL;
+	dir->sub_d = NULL;
+	dir->sub_u = NULL;
 	dir->info->next = NULL;
 	dir->next = NULL;
-	dir->prev = NULL;
 	return (dir);
 }
 

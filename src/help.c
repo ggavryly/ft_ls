@@ -20,13 +20,13 @@ void		recursive(t_dir **h, t_dir **l, t_info **t, t_dir **dir)
 	(*dir)->stream = opendir((*dir)->info->path);
 }
 
-void		close_recursive_help(t_dir **d, t_dir **h)
-{
-	(*d)->stream ? closedir((*d)->stream) : 1;
-	(*d)->stream = NULL;
-	while (!(*d)->stream && (*h)->stream)
-		*d = (*d)->prev;
-}
+//void		close_recursive_help(t_dir **d, t_dir **h)
+//{
+//	(*d)->stream ? closedir((*d)->stream) : 1;
+//	(*d)->stream = NULL;
+//	while (!(*d)->stream && (*h)->stream)
+//		*d = (*d)->prev;
+//}
 
 void		init_data(t_info **tmp_info, t_dire *tmp_dire, t_info **dir)
 {

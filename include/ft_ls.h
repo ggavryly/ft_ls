@@ -63,8 +63,9 @@ typedef struct		s_dir
 {
 	DIR				*stream;
 	t_info			*info;
+	struct s_dir	*sub_d;
 	struct s_dir	*next;
-	struct s_dir	*prev;
+	struct s_dir	*sub_u;
 }					t_dir;
 
 int					ft_printf(const char *format, ...);
@@ -73,7 +74,7 @@ t_dir				*allocate_dir(t_dir *dir);
 t_info				*allocate_info(t_info *info);
 int					str_ascii(const char *s1, const char *s2);
 
-t_dir				*new_dir(t_dir *c, t_info *t_in, t_dir **d);
+t_dir	*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head);
 void				new_node(t_dir *i, t_info *t_i);
 t_info				*sort_file_by_ascii(t_info *info);
 t_info				*sort_file_by_time(t_info *info);

@@ -59,31 +59,64 @@ static void		init_default(t_dir *dir, int *flags)
 	closedir(dir->stream);
 }
 
+static t_dir	*check_dir(t_dir *dir)
+{
+	t_info	*walk;
+	t_dir	*sub_d_head;
+	t_dir	*sub_d_last;
+
+	walk = dir->info;
+	sub_d_head = NULL;
+	sub_d_last = NULL;
+	while (walk)
+	{
+		if (S_ISDIR(walk->mode))
+			sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
+		walk = walk->next;
+	}
+	closedir(dir->stream);
+	dir->stream = NULL;
+	return (sub_d_head);
+}
+
 static void		init_recursive(t_dir *dir, int *flags)
 {
 	t_dir	*head;
-	t_dir	*last;
+	t_dir	*sub_d;
+	t_dir	*sub_d_first;
 	t_dire	*d;
 	t_info	*tmp;
 
-	recursive(&head, &last, &tmp, &dir);
-	while (head->stream)
+	recursive(&head, &sub_d, &tmp, &dir);
+	while (head)
 	{
-		while ((d = readdir(dir->stream)))
+		while ((d = readdir(sub_d->stream)))
 		{
 			if (scip_dot(d, *flags))
 				continue ;
-			init_data(&tmp, d, &dir->info);
-			if (S_ISDIR(tmp->mode))
-			{
-				last = new_dir(last, tmp, &dir);
-				if (!last->stream)
-					break ;
-			}
-			else
-				new_node(dir, tmp);
+			init_data(&tmp, d, &sub_d->info);
+			new_node(sub_d, tmp);
 		}
-		close_recursive_help(&dir, &head);
+		sort(sub_d, *flags);
+		if (!sub_d->next)
+		{
+			sub_d = head;
+			sub_d = check_dir(sub_d);
+		}
+		else
+			sub_d = sub_d->next;
+		if (sub_d)
+		{
+			while (sub_d)
+			{
+				if ((sub_d->stream = opendir(sub_d->info->path)) ? 1 : open_error(&sub_d))
+					break;
+				else
+					sub_d = sub_d->next;
+			}
+			if (!sub_d)
+				sub_d = sub_d->sub_u;
+		}
 	}
 	free(tmp);
 }
