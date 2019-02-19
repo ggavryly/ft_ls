@@ -79,7 +79,8 @@ t_info				*sort_file_by_ascii(t_info *info);
 t_info				*sort_file_by_time(t_info *info);
 t_dir				*sort_dirs_by_ascii(t_dir *info);
 t_dir				*sort(t_dir	*dir, int flags);
-t_info				*reverse_list(t_info *info);
+t_dir				*reverse_dir(t_dir *info);
+t_info				*reverse_info(t_info *info);
 void				free_path(char **path_ar);
 
 int					init_option(int ar, char **av, int	*flags);

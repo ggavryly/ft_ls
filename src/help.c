@@ -45,7 +45,8 @@ int			scip_dot(t_dire *tmp_dire, int flags)
 	return (0);
 }
 
-t_info		*reverse_list(t_info *info)
+
+t_info		*reverse_info(t_info *info)
 {
 	t_info	*head;
 	t_info	*curr;
@@ -57,6 +58,28 @@ t_info		*reverse_list(t_info *info)
 	prev = NULL;
 	while (curr)
 	{
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	head = prev;
+	return (head);
+}
+
+t_dir		*reverse_dir(t_dir *info)
+{
+	t_dir	*head;
+	t_dir	*curr;
+	t_dir	*prev;
+	t_dir	*next;
+
+	head = info;
+	curr = head;
+	prev = NULL;
+	while (curr)
+	{
+		curr->info->next = reverse_info(curr->info->next);
 		next = curr->next;
 		curr->next = prev;
 		prev = curr;

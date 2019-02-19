@@ -29,7 +29,7 @@ int		main(int ar, char **av)
 		init_info(flags, dir);
 		sort(dir, flags);
 		if (flags & R)
-			dir->info->next = reverse_list(dir->info->next);
+			dir = reverse_dir(dir);
 		display(dir, flags);
 		args = args->next;
 	}
