@@ -31,7 +31,6 @@ int		main(int ar, char **av)
 		if (flags & R)
 			dir->info->next = reverse_list(dir->info->next);
 		display(dir, flags);
-		list_free(dir);
 		args = args->next;
 	}
 	return (0);

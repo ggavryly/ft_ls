@@ -71,10 +71,10 @@ int					ft_printf(const char *format, ...);
 
 t_dir				*allocate_dir(t_dir *dir);
 t_info				*allocate_info(t_info *info);
+int					str_ascii(const char *s1, const char *s2);
 
 t_dir				*new_dir(t_dir *c, t_info *t_in, t_dir **d);
 void				new_node(t_dir *i, t_info *t_i);
-void				list_free(t_dir *dir);
 t_info				*sort_file_by_ascii(t_info *info);
 t_info				*sort_file_by_time(t_info *info);
 t_dir				*sort_dirs_by_ascii(t_dir *info);

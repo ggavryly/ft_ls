@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-static int	str_ascii(const char *s1, const char *s2)
+int			str_ascii(const char *s1, const char *s2)
 {
 	int i;
 
@@ -120,7 +120,10 @@ t_dir		*sort(t_dir *dir, int flags)
 {
 	t_dir	*walk;
 
-	dir->info->next = sort_file_by_ascii(dir->info->next);
+	if (flags & T)
+		dir->info->next = sort_file_by_time(dir->info->next);
+	else
+		dir->info->next = sort_file_by_ascii(dir->info->next);
 	walk = dir->next;
 	walk = sort_dirs_by_ascii(walk);
 	while (walk)

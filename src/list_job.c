@@ -30,6 +30,7 @@ void	list_free(t_dir *dir)
 		free(dir);
 		dir = tmp;
 	}
+	system("leaks ft_ls");
 }
 
 void	add_info(t_dir *last, t_info *add_info)
@@ -87,12 +88,15 @@ t_dir	*new_dir(t_dir *last, t_info *tmp_info, t_dir **dir)
 	t_dir	*new;
 	t_info	*new_info;
 
+	if (!(ft_strcmp(tmp_info->name, ".") && ft_strcmp(tmp_info->name, "..")))
+		return (last);
 	new = allocate_dir(new);
 	new_info = allocate_info(new_info);
 	info_copy(new_info, tmp_info);
 	add_info(*dir, new_info);
 	ft_strcpy(new->info->name, tmp_info->name);
 	ft_strcpy(new->info->path, tmp_info->path);
+	new->info->mtime = tmp_info->mtime;
 	last->next = new;
 	new->prev = last;
 	(new->stream = opendir(new->info->path)) ? 1 : open_error(&new);

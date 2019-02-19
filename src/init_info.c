@@ -74,8 +74,7 @@ static void		init_recursive(t_dir *dir, int *flags)
 			if (scip_dot(d, *flags))
 				continue ;
 			init_data(&tmp, d, &dir->info);
-			if (S_ISDIR(tmp->mode) && ft_strcmp(d->d_name, ".") &&
-			ft_strcmp(d->d_name, ".."))
+			if (S_ISDIR(tmp->mode))
 			{
 				last = new_dir(last, tmp, &dir);
 				if (!last->stream)
@@ -86,6 +85,7 @@ static void		init_recursive(t_dir *dir, int *flags)
 		}
 		close_recursive_help(&dir, &head);
 	}
+	free(tmp);
 }
 
 t_dir			*init_info(int flags, t_dir *dir)

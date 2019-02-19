@@ -62,11 +62,15 @@ static char	file_type(int mode)
 static char	list_xattr(char *path)
 {
 	char		buf[256];
+	acl_t		del;
 
 	if (listxattr(path, buf, 256, XATTR_NOFOLLOW) > 0)
 		return ('@');
-	if (acl_get_link_np(path, ACL_TYPE_EXTENDED))
+	if ((del = acl_get_link_np(path, ACL_TYPE_EXTENDED)))
+	{
+		free(del);
 		return ('+');
+	}
 	return (' ');
 }
 
