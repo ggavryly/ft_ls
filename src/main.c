@@ -27,7 +27,6 @@ int		main(int ar, char **av)
 		dir = allocate_dir(dir);
 		path_manage(dir, args);
 		init_info(flags, dir);
-		sort(dir, flags);
 		if (flags & R)
 			dir = reverse_dir(dir);
 		display(dir, flags);

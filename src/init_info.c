@@ -65,7 +65,7 @@ static t_dir	*check_dir(t_dir *dir)
 	t_dir	*sub_d_head;
 	t_dir	*sub_d_last;
 
-	walk = dir->info;
+	walk = dir->info->next;
 	sub_d_head = NULL;
 	sub_d_last = NULL;
 	while (walk)
@@ -74,49 +74,58 @@ static t_dir	*check_dir(t_dir *dir)
 			sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
 		walk = walk->next;
 	}
-	closedir(dir->stream);
-	dir->stream = NULL;
+	dir->sub_d = sub_d_head;
 	return (sub_d_head);
+}
+
+static t_dir	*open_catalog(t_dir *walk)
+{
+	while (walk)
+	{
+		if ((walk->stream = opendir(walk->info->path)) ? (0) : !open_error(&walk))
+			walk = walk->next;
+		else
+			break ;
+	}
+	if (!walk)
+		return (NULL);
+	return (walk);
 }
 
 static void		init_recursive(t_dir *dir, int *flags)
 {
 	t_dir	*head;
-	t_dir	*sub_d;
-	t_dir	*sub_d_first;
+	t_dir	*walk;
+	t_dir	*next;
 	t_dire	*d;
 	t_info	*tmp;
 
-	recursive(&head, &sub_d, &tmp, &dir);
-	while (head)
+	recursive(&head, &walk, &tmp, &dir);
+	while (walk)
 	{
-		while ((d = readdir(sub_d->stream)))
+		next = walk->next;
+		while ((d = readdir(walk->stream)))
 		{
 			if (scip_dot(d, *flags))
 				continue ;
-			init_data(&tmp, d, &sub_d->info);
-			new_node(sub_d, tmp);
+			init_data(&tmp, d, &walk->info);
+			new_node(walk, tmp);
 		}
-		sort(sub_d, *flags);
-		if (!sub_d->next)
+		sort(walk, *flags);
+		closedir(walk->stream);
+		walk->stream = NULL;
+		head = walk;
+		walk = check_dir(walk);
+		if (!walk)
 		{
-			sub_d = head;
-			sub_d = check_dir(sub_d);
-		}
-		else
-			sub_d = sub_d->next;
-		if (sub_d)
-		{
-			while (sub_d)
+			if (!next)
 			{
-				if ((sub_d->stream = opendir(sub_d->info->path)) ? 1 : open_error(&sub_d))
-					break;
-				else
-					sub_d = sub_d->next;
-			}
-			if (!sub_d)
-				sub_d = sub_d->sub_u;
+				walk = head->sub_u;
+				walk = walk->next;
+			} else
+				walk = next;
 		}
+		walk = open_catalog(walk);
 	}
 	free(tmp);
 }

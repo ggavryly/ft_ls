@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-static t_info	*display_first(t_dir *dir, int flags)
+static t_info	*display_dir(t_dir *dir, int flags)
 {
 	t_info *head;
 
@@ -38,53 +38,42 @@ static t_info	*display_first(t_dir *dir, int flags)
 	return (head);
 }
 
-static t_dir	*display_dirs_first(t_dir *dir, int flags)
+static	t_dir	*display_dirs(t_dir *dir, int flags)
 {
 	t_dir	*head;
 
 	head = dir;
-	if (!head)
-		return (NULL);
-	head->info = display_first(head, flags);
-	if (head->next)
-		write(1, "\n", 1);
-	head = head->next;
-	while (head)
+	while (dir)
 	{
-		ft_putstr(head->info->path);
-		write(1, ":\n", 2);
-		head->info = display_first(head, flags);
-		if (head->next)
-			write(1, "\n", 1);
-		head = head->next;
+		ft_putstr(dir->info->path);
+		ft_putstr(":\n");
+		display_dir(dir, flags);
+		if (dir->sub_d)
+		{
+			ft_putstr("\n");
+			display_dirs(dir->sub_d, flags);
+		}
+		else
+			ft_putstr("\n");
+		dir = dir->next;
 	}
-	return (dir);
+	return (head);
 }
 
-static t_dir	*display_dirs_default(t_dir *dir, int flags)
-{
-	t_dir	*head;
-
-	head = dir;
-	if (!head)
-		return (NULL);
-	while (head)
-	{
-		ft_putstr(head->info->path);
-		write(1, ":\n", 2);
-		head->info = display_first(head, flags);
-		if (head->next)
-			write(1, "\n", 1);
-		head = head->next;
-	}
-	return (dir);
-}
 
 t_dir			*display(t_dir *dir, int flags)
 {
 	if (flags & BIG)
-		dir = display_dirs_default(dir, flags);
+	{
+		dir->info = display_dir(dir, flags);
+		ft_putstr("\n");
+		dir = display_dirs(dir->sub_d, flags);
+	}
 	else if (!(flags & BIG))
-		dir = display_dirs_first(dir, flags);
+	{
+		dir->info = display_dir(dir, flags);
+		ft_putstr("\n");
+		dir = display_dirs(dir->sub_d, flags);
+	}
 	return (dir);
 }
