@@ -72,10 +72,17 @@ int					ft_printf(const char *format, ...);
 
 t_dir				*allocate_dir(t_dir *dir);
 t_info				*allocate_info(t_info *info);
+t_dir				*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head);
+void				new_node(t_dir *i, t_info *t_i);
 int					str_ascii(const char *s1, const char *s2);
 
-t_dir	*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head);
-void				new_node(t_dir *i, t_info *t_i);
+
+void				recursive(t_dir **h, t_dir **l, t_info **t, t_dir **d);
+//void				recursive_help(t_dir **walk, t_dir **save, t_dir **next);
+//t_dir				*sub_up(t_dir	*dir);
+//t_dir				*open_catalog(t_dir *walk);
+//t_dir				*check_dir(t_dir *dir);
+
 t_info				*sort_file_by_ascii(t_info *info);
 t_info				*sort_file_by_time(t_info *info);
 t_dir				*sort_dirs_by_ascii(t_dir *info);
@@ -84,6 +91,9 @@ t_dir				*reverse_dir(t_dir *info);
 t_info				*reverse_info(t_info *info);
 void				free_path(char **path_ar);
 
+void				init_stat(t_info *tmp_inf, t_dire *tmp_dire);
+t_info				*init_start(int ar, char **av, int *flags, t_info *args);
+void				init_data(t_info **tl, t_dire *t, t_info **d);
 int					init_option(int ar, char **av, int	*flags);
 t_dir				*init_info(int flags, t_dir *head);
 t_dir				*display(t_dir *dir, int flags);
@@ -91,21 +101,15 @@ void				info_copy(t_info *dst, t_info *tmp_info);
 
 void				path_manage(t_dir *curr, t_info *curr_ar_path);
 void				add_path(t_info *curr, t_dire *curr_dire, t_info *list);
-t_info				*init_start(int ar, char **av, int *flags, t_info *args);
+
 void				put_err(t_info *error, int mode);
 t_info				*error_check(t_info *args, int mode);
-
 int					open_error(t_dir **if_error);
 void				put_error(t_dir *dir);
 
 void				total_put(t_info *info);
 void				flag_l(t_info *info);
 int					flag_l_chmod(t_info *dir);
-void				init_stat(t_info *tmp_inf, t_dire *tmp_dire);
-
-void				recursive(t_dir **h, t_dir **l, t_info **t, t_dir **d);
-void				close_recursive_help(t_dir **d, t_dir **h);
-void				init_data(t_info **tl, t_dire *t, t_info **d);
 int					scip_dot(t_dire *tmp_dire, int flags);
 
 #endif

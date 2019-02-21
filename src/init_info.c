@@ -59,7 +59,7 @@ static void		init_default(t_dir *dir, int *flags)
 	closedir(dir->stream);
 }
 
-static t_dir	*check_dir(t_dir *dir)
+t_dir	*check_dir(t_dir *dir)
 {
 	t_info	*walk;
 	t_dir	*sub_d_head;
@@ -74,36 +74,77 @@ static t_dir	*check_dir(t_dir *dir)
 			sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
 		walk = walk->next;
 	}
+	if (sub_d_head)
+		dir->stream = NULL;
 	dir->sub_d = sub_d_head;
 	return (sub_d_head);
 }
 
-static t_dir	*open_catalog(t_dir *walk)
+t_dir	*sub_unext(t_dir *walk)
 {
-	while (walk)
+	t_dir	*result;
+
+	result = NULL;
+	while (!result)
 	{
-		if ((walk->stream = opendir(walk->info->path)) ? (0) : !open_error(&walk))
-			walk = walk->next;
+		result = walk->sub_u;
+		if (!result)
+			break;
+		if (!result->next)
+		{
+			result = result->next;
+			walk = walk->sub_u;
+			continue;
+		}
 		else
-			break ;
+			return (result->next);
 	}
-	if (!walk)
-		return (NULL);
+	return (result);
+}
+
+t_dir	*open_catalog(t_dir *walk)
+{
+	t_dir *walk_sub_u;
+
+	if (walk)
+	{
+		walk_sub_u = sub_unext(walk);
+		while (walk)
+		{
+			if ((walk->stream = opendir(walk->info->path)) ? (0) : !open_error(&walk))
+				walk = walk->next;
+			else
+				break ;
+		}
+		if (!walk)
+			walk = open_catalog(walk_sub_u);
+	}
 	return (walk);
+}
+
+t_dir	*sub_up(t_dir	*dir)
+{
+	if (dir)
+	{
+		if (dir->next)
+			return (dir->next);
+		else
+			dir = sub_up(dir->sub_u);
+	}
+	return (dir);
 }
 
 static void		init_recursive(t_dir *dir, int *flags)
 {
-	t_dir	*head;
-	t_dir	*walk;
 	t_dir	*next;
+	t_dir	*save;
+	t_dir	*walk;
 	t_dire	*d;
 	t_info	*tmp;
 
-	recursive(&head, &walk, &tmp, &dir);
+	recursive(&save, &walk, &tmp, &dir);
 	while (walk)
 	{
-		next = walk->next;
 		while ((d = readdir(walk->stream)))
 		{
 			if (scip_dot(d, *flags))
@@ -113,17 +154,14 @@ static void		init_recursive(t_dir *dir, int *flags)
 		}
 		sort(walk, *flags);
 		closedir(walk->stream);
-		walk->stream = NULL;
-		head = walk;
+		next = walk->next;
+		save = walk->sub_u;
 		walk = check_dir(walk);
 		if (!walk)
 		{
-			if (!next)
-			{
-				walk = head->sub_u;
-				walk = walk->next;
-			} else
-				walk = next;
+			walk = next;
+			if (!walk)
+				walk = sub_up(save);
 		}
 		walk = open_catalog(walk);
 	}

@@ -33,7 +33,7 @@ static t_info	*display_dir(t_dir *dir, int flags)
 			dir->info = dir->info->next;
 		}
 	}
-	else
+	else if (dir->info->error_num)
 		put_error(dir);
 	return (head);
 }
@@ -54,7 +54,7 @@ static	t_dir	*display_dirs(t_dir *dir, int flags)
 			display_dirs(dir->sub_d, flags);
 		}
 		else
-			ft_putstr("\n");
+				ft_putstr("\n");
 		dir = dir->next;
 	}
 	return (head);

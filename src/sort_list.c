@@ -122,5 +122,7 @@ t_dir		*sort(t_dir *dir, int flags)
 		dir->info->next = sort_file_by_time(dir->info->next);
 	else
 		dir->info->next = sort_file_by_ascii(dir->info->next);
+	if (flags & R)
+		dir = reverse_dir(dir);
 	return (dir);
 }
