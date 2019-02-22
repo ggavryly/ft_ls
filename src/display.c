@@ -47,24 +47,34 @@ static	t_dir	*display_dirs(t_dir *dir, int flags)
 	{
 		ft_putstr(dir->info->path);
 		ft_putstr(":\n");
-		display_dir(dir, flags);
+		dir->info = display_dir(dir, flags);
 		if (dir->sub_d)
 		{
 			ft_putstr("\n");
-			display_dirs(dir->sub_d, flags);
+			dir->sub_d = display_dirs(dir->sub_d, flags);
 		}
-		else
-				ft_putstr("\n");
+		if (dir->next)
+			ft_putstr("\n");
 		dir = dir->next;
 	}
 	return (head);
 }
 
-
 t_dir			*display(t_dir *dir, int flags)
 {
-	if (flags & BIG)
+	if (!dir->sub_d)
 	{
+		if (flags & BIG)
+		{
+			ft_putstr(dir->info->path);
+			ft_putstr(":\n");
+		}
+		dir->info = display_dir(dir, flags);
+	}
+	else if (flags & BIG)
+	{
+		ft_putstr(dir->info->path);
+		ft_putstr(":\n");
 		dir->info = display_dir(dir, flags);
 		ft_putstr("\n");
 		dir = display_dirs(dir->sub_d, flags);

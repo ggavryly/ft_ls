@@ -72,23 +72,17 @@ int					ft_printf(const char *format, ...);
 
 t_dir				*allocate_dir(t_dir *dir);
 t_info				*allocate_info(t_info *info);
-t_dir				*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head);
+t_dir				*new_dir(t_dir *sd, t_info *d_in, t_dir *su, t_dir **head);
 void				new_node(t_dir *i, t_info *t_i);
 int					str_ascii(const char *s1, const char *s2);
 
-
 void				recursive(t_dir **h, t_dir **l, t_info **t, t_dir **d);
-//void				recursive_help(t_dir **walk, t_dir **save, t_dir **next);
-//t_dir				*sub_up(t_dir	*dir);
-//t_dir				*open_catalog(t_dir *walk);
-//t_dir				*check_dir(t_dir *dir);
+void				recursive_help(t_dir **w, t_dir **s, t_dir **next, int *f);
 
 t_info				*sort_file_by_ascii(t_info *info);
 t_info				*sort_file_by_time(t_info *info);
-t_dir				*sort_dirs_by_ascii(t_dir *info);
 t_dir				*sort(t_dir	*dir, int flags);
-t_dir				*reverse_dir(t_dir *info);
-t_info				*reverse_info(t_info *info);
+t_info				*reverse_dir(t_info *info);
 void				free_path(char **path_ar);
 
 void				init_stat(t_info *tmp_inf, t_dire *tmp_dire);
@@ -111,5 +105,6 @@ void				total_put(t_info *info);
 void				flag_l(t_info *info);
 int					flag_l_chmod(t_info *dir);
 int					scip_dot(t_dire *tmp_dire, int flags);
+void				list_free(t_dir *dir);
 
 #endif

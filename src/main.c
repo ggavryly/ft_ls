@@ -20,6 +20,7 @@ int		main(int ar, char **av)
 	t_info		*head;
 
 	dir = NULL;
+	args = NULL;
 	head = init_start(ar, av, &flags, args);
 	args = head->next;
 	while (args)
@@ -28,6 +29,9 @@ int		main(int ar, char **av)
 		path_manage(dir, args);
 		init_info(flags, dir);
 		display(dir, flags);
+		if (args->next)
+			ft_putstr("\n");
+		list_free(dir);
 		args = args->next;
 	}
 	return (0);

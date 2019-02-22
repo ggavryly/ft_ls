@@ -39,7 +39,6 @@ static void		init_default(t_dir *dir, int *flags)
 
 	head = dir->info;
 	prev = NULL;
-	curr = NULL;
 	dir->stream = opendir(dir->info->path);
 	while ((tmp_d = readdir(dir->stream)))
 	{
@@ -56,82 +55,8 @@ static void		init_default(t_dir *dir, int *flags)
 		head = head->next;
 		prev = curr;
 	}
+	sort(dir, *flags);
 	closedir(dir->stream);
-}
-
-t_dir	*check_dir(t_dir *dir)
-{
-	t_info	*walk;
-	t_dir	*sub_d_head;
-	t_dir	*sub_d_last;
-
-	walk = dir->info->next;
-	sub_d_head = NULL;
-	sub_d_last = NULL;
-	while (walk)
-	{
-		if (S_ISDIR(walk->mode))
-			sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
-		walk = walk->next;
-	}
-	if (sub_d_head)
-		dir->stream = NULL;
-	dir->sub_d = sub_d_head;
-	return (sub_d_head);
-}
-
-t_dir	*sub_unext(t_dir *walk)
-{
-	t_dir	*result;
-
-	result = NULL;
-	while (!result)
-	{
-		result = walk->sub_u;
-		if (!result)
-			break;
-		if (!result->next)
-		{
-			result = result->next;
-			walk = walk->sub_u;
-			continue;
-		}
-		else
-			return (result->next);
-	}
-	return (result);
-}
-
-t_dir	*open_catalog(t_dir *walk)
-{
-	t_dir *walk_sub_u;
-
-	if (walk)
-	{
-		walk_sub_u = sub_unext(walk);
-		while (walk)
-		{
-			if ((walk->stream = opendir(walk->info->path)) ? (0) : !open_error(&walk))
-				walk = walk->next;
-			else
-				break ;
-		}
-		if (!walk)
-			walk = open_catalog(walk_sub_u);
-	}
-	return (walk);
-}
-
-t_dir	*sub_up(t_dir	*dir)
-{
-	if (dir)
-	{
-		if (dir->next)
-			return (dir->next);
-		else
-			dir = sub_up(dir->sub_u);
-	}
-	return (dir);
 }
 
 static void		init_recursive(t_dir *dir, int *flags)
@@ -148,22 +73,11 @@ static void		init_recursive(t_dir *dir, int *flags)
 		while ((d = readdir(walk->stream)))
 		{
 			if (scip_dot(d, *flags))
-				continue ;
+				continue;
 			init_data(&tmp, d, &walk->info);
 			new_node(walk, tmp);
 		}
-		sort(walk, *flags);
-		closedir(walk->stream);
-		next = walk->next;
-		save = walk->sub_u;
-		walk = check_dir(walk);
-		if (!walk)
-		{
-			walk = next;
-			if (!walk)
-				walk = sub_up(save);
-		}
-		walk = open_catalog(walk);
+		recursive_help(&walk, &save, &next, flags);
 	}
 	free(tmp);
 }

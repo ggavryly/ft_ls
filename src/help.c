@@ -12,18 +12,41 @@
 
 #include "../include/ft_ls.h"
 
+static void	info_free(t_info *info)
+{
+	t_info *walk;
+	t_info *next;
+
+	walk = info;
+	while (walk)
+	{
+		next = walk->next;
+		free(walk);
+		walk = next;
+	}
+}
+
+void		list_free(t_dir *dir)
+{
+	t_dir *next;
+
+	while (dir)
+	{
+		next = dir->next;
+		if (dir->sub_d)
+			list_free(dir->sub_d);
+		info_free(dir->info);
+		free(dir);
+		dir = next;
+	}
+}
+
 void		recursive(t_dir **h, t_dir **l, t_info **t, t_dir **dir)
 {
 	*h = *dir;
 	*t = allocate_info(*t);
 	*l = *h;
 	(*dir)->stream = opendir((*dir)->info->path);
-}
-
-void		init_data(t_info **tmp_info, t_dire *tmp_dire, t_info **dir)
-{
-	add_path(*tmp_info, tmp_dire, *dir);
-	init_stat(*tmp_info, tmp_dire);
 }
 
 int			scip_dot(t_dire *tmp_dire, int flags)
@@ -37,8 +60,7 @@ int			scip_dot(t_dire *tmp_dire, int flags)
 	return (0);
 }
 
-
-t_info		*reverse_info(t_info *info)
+t_info		*reverse_dir(t_info *info)
 {
 	t_info	*head;
 	t_info	*curr;
@@ -50,28 +72,6 @@ t_info		*reverse_info(t_info *info)
 	prev = NULL;
 	while (curr)
 	{
-		next = curr->next;
-		curr->next = prev;
-		prev = curr;
-		curr = next;
-	}
-	head = prev;
-	return (head);
-}
-
-t_dir		*reverse_dir(t_dir *info)
-{
-	t_dir	*head;
-	t_dir	*curr;
-	t_dir	*prev;
-	t_dir	*next;
-
-	head = info;
-	curr = head;
-	prev = NULL;
-	while (curr)
-	{
-		curr->info->next = reverse_info(curr->info->next);
 		next = curr->next;
 		curr->next = prev;
 		prev = curr;

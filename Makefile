@@ -16,7 +16,8 @@ SRCS_NAME = src/main.c \
 			src/sort_list.c \
 			src/flag_help.c \
 			src/flag_l.c \
-			src/help.c 
+			src/help.c \
+			src/recusive.c
 
 SRCO_NAME = $(SRCS_NAME:.c=.o)
 

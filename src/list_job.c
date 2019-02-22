@@ -12,45 +12,27 @@
 
 #include "../include/ft_ls.h"
 
-void	list_free(t_dir *dir)
-{
-	t_dir	*tmp;
-	t_info	*tmp1;
-
-	while (dir)
-	{
-		tmp1 = dir->info;
-		while (tmp1)
-		{
-			tmp1 = dir->info->next;
-			free(dir->info);
-			dir->info = tmp1;
-		}
-		tmp = dir->next;
-		free(dir);
-		dir = tmp;
-	}
-	system("leaks ft_ls");
-}
-
 void	add_info(t_dir *last, t_info *add_info)
 {
 	t_info *last_info;
 	t_info *tmp;
 
+	last_info = NULL;
 	tmp = last->info;
 	while (tmp)
 	{
 		last_info = tmp;
 		tmp = tmp->next;
 	}
-	last_info->next = add_info;
+	if (last_info)
+		last_info->next = add_info;
 }
 
 void	new_node(t_dir *dir, t_info *tmp_info)
 {
 	t_info *new;
 
+	new = NULL;
 	new = allocate_info(new);
 	ft_strcpy(new->name, tmp_info->name);
 	ft_strcpy(new->path, tmp_info->path);
@@ -88,8 +70,6 @@ t_dir	*new_dir(t_dir *sub_d, t_info *dir_info, t_dir *sub_u, t_dir **head)
 	t_dir	*new;
 
 	new = NULL;
-	if (!(ft_strcmp(dir_info->name, ".") && ft_strcmp(dir_info->name, "..")))
-		return (NULL);
 	new = allocate_dir(new);
 	info_copy(new->info, dir_info);
 	new->sub_u = sub_u;

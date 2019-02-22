@@ -16,9 +16,17 @@ static	void	split_option(int i, char **av, int *flags)
 {
 	int j;
 
-	j = 0;
+	j = 1;
 	while (av[i][j])
 	{
+		if (av[i][j] != 'l' && av[i][j] != 'R' && av[i][j] != 'a'
+			&& av[i][j] != 'r' && av[i][j] != 't')
+		{
+			ft_putstr("ft_ls: illegal option : -- ");
+			ft_putchar(av[i][j]);
+			ft_putstr("\nusage: ft_ls [-lRart] [file ...]\n");
+			exit(0);
+		}
 		(av[i][j] == 'l') ? *flags |= L : 0;
 		(av[i][j] == 'R') ? *flags |= RR : 0;
 		(av[i][j] == 'a') ? *flags |= A : 0;

@@ -12,74 +12,96 @@
 
 #include "../include/ft_ls.h"
 
-//t_dir	*check_dir(t_dir *dir)
-//{
-//	t_info	*walk;
-//	t_dir	*sub_d_head;
-//	t_dir	*sub_d_last;
-//
-//	walk = dir->info->next;
-//	sub_d_head = NULL;
-//	sub_d_last = NULL;
-//	while (walk)
-//	{
-//		if (S_ISDIR(walk->mode))
-//			sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
-//		walk = walk->next;
-//	}
-//	dir->sub_d = sub_d_head;
-//	return (sub_d_head);
-//}
-//
-//t_dir	*open_catalog(t_dir *walk)
-//{
-//	t_dir *sub_u;
-//
-//	if (walk)
-//	{
-//		sub_u = walk->sub_u->next;
-//		while (walk)
-//		{
-//			if ((walk->stream = opendir(walk->info->path)) ? (0) : !open_error(&walk))
-//				walk = walk->next;
-//			else
-//				break ;
-//		}
-//		if (!walk)
-//		{
-//			walk = open_catalog(sub_u);
-//		}
-//	}
-//	return (walk);
-//}
-//
-//t_dir	*sub_up(t_dir	*dir)
-//{
-//	if (dir)
-//	{
-//		if (dir->next)
-//			dir = open_catalog(dir->next);
-//		else
-//			dir = sub_up(dir->sub_u);
-//	}
-//	return (dir);
-//}
-//
-//void	recursive_help(t_dir **walk, t_dir **save, t_dir **next)
-//{
-//	closedir((*walk)->stream);
-//	(*walk)->stream = NULL;
-//	*next = (*walk)->next;
-//	*save = (*walk)->sub_u;
-//	*walk = check_dir(*walk);
-//	if (!(*walk))
-//	{
-//		*walk = *next;
-//		if (!(*walk))
-//			*walk = sub_up(*save);
-//		else
-//			*walk = open_catalog(*walk);
-//	}
-//	else
-//		*walk = open_catalog(*walk);
-//}
+static t_dir	*check_dir(t_dir *dir)
+{
+	t_info	*walk;
+	t_dir	*sub_d_head;
+	t_dir	*sub_d_last;
+
+	walk = dir->info->next;
+	sub_d_head = NULL;
+	sub_d_last = NULL;
+	while (walk)
+	{
+		if (S_ISDIR(walk->mode))
+		{
+			if (ft_strcmp(walk->name, ".") && ft_strcmp(walk->name, ".."))
+				sub_d_last = new_dir(sub_d_last, walk, dir, &sub_d_head);
+		}
+		walk = walk->next;
+	}
+	if (sub_d_head)
+		dir->stream = NULL;
+	dir->sub_d = sub_d_head;
+	return (sub_d_head);
+}
+
+static t_dir	*sub_unext(t_dir *walk)
+{
+	t_dir	*result;
+
+	result = NULL;
+	while (!result)
+	{
+		result = walk->sub_u;
+		if (!result)
+			break ;
+		if (!result->next)
+		{
+			result = result->next;
+			walk = walk->sub_u;
+			continue ;
+		}
+		else
+			return (result->next);
+	}
+	return (result);
+}
+
+static t_dir	*open_catalog(t_dir *w)
+{
+	t_dir *walk_sub_u;
+
+	if (w)
+	{
+		walk_sub_u = sub_unext(w);
+		while (w)
+		{
+			if ((w->stream = opendir(w->info->path)) ? (0) : !open_error(&w))
+				w = w->next;
+			else
+				break ;
+		}
+		if (!w)
+			w = open_catalog(walk_sub_u);
+	}
+	return (w);
+}
+
+static	t_dir	*sub_up(t_dir *dir)
+{
+	if (dir)
+	{
+		if (dir->next)
+			return (dir->next);
+		else
+			dir = sub_up(dir->sub_u);
+	}
+	return (dir);
+}
+
+void			recursive_help(t_dir **w, t_dir **s, t_dir **next, int *flags)
+{
+	sort(*w, *flags);
+	closedir((*w)->stream);
+	*next = (*w)->next;
+	*s = (*w)->sub_u;
+	*w = check_dir(*w);
+	if (!(*w))
+	{
+		*w = *next;
+		if (!(*w))
+			*w = sub_up(*s);
+	}
+	*w = open_catalog(*w);
+}
