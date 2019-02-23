@@ -128,7 +128,6 @@ t_info			*init_start(int ar, char **av, int *flags, t_info *args)
 	av += tmp + 1;
 	path_ar = init_args(av, ar);
 	args = test_args(args, path_ar);
-	args = sort_file_by_ascii(args);
 	if (args->next->next)
 		(*flags) |= BIG;
 	args = error_check(args, 1);

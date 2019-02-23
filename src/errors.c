@@ -43,8 +43,16 @@ void	put_err(t_info *error, int mode)
 	}
 	else if (error->error_num == 20 && mode == 2)
 	{
-		ft_putstr(error->path);
-		ft_putstr("\n");
+		ft_putstr_fd(error->path, 2);
+		ft_putstr_fd("\n", 2);
+	}
+	else
+	{
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(error->path, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(strerror(error->error_num), 2);
+		ft_putstr_fd("\n", 2);
 	}
 }
 
@@ -62,7 +70,10 @@ t_info	*del_error(t_info *del_me, t_info *prev, int mode, int *flag)
 		free(del_me);
 	}
 	else
-		return (del_me);
+	{
+		prev->next = del_me->next;
+		free(del_me);
+	}
 	return (prev);
 }
 
