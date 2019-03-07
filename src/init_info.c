@@ -30,7 +30,15 @@ void			init_stat(t_info *tmp_inf, t_dire *tmp_dire)
 	tmp_inf->ctime = stat_tmp.st_ctimespec;
 }
 
-static void		init_default(t_dir *dir, int *flags)
+static void		def_help(t_dir *dir, int flags)
+{
+	sort(dir, flags);
+	closedir(dir->stream);
+	dir = display(dir, &flags);
+	list_free(dir);
+}
+
+static void		init_default(t_dir *dir, const int *flags)
 {
 	t_info		*curr;
 	t_info		*head;
@@ -39,15 +47,14 @@ static void		init_default(t_dir *dir, int *flags)
 
 	head = dir->info;
 	prev = NULL;
+	curr = NULL;
 	dir->stream = opendir(dir->info->path);
 	while ((tmp_d = readdir(dir->stream)))
 	{
 		if (tmp_d->d_name[0] == '.' && !(*flags & A))
 			continue;
 		curr = allocate_info(curr);
-		ft_strcpy(curr->path, dir->info->path);
-		ft_strcat(curr->path, "/");
-		ft_strcat(curr->path, tmp_d->d_name);
+		add_path(curr, tmp_d, dir->info);
 		init_stat(curr, tmp_d);
 		if (prev)
 			prev->next = curr;
@@ -55,8 +62,7 @@ static void		init_default(t_dir *dir, int *flags)
 		head = head->next;
 		prev = curr;
 	}
-	sort(dir, *flags);
-	closedir(dir->stream);
+	def_help(dir, *flags);
 }
 
 static void		init_recursive(t_dir *dir, int *flags)

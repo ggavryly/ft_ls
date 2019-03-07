@@ -36,72 +36,72 @@ static t_dir	*check_dir(t_dir *dir)
 	return (sub_d_head);
 }
 
-static t_dir	*sub_unext(t_dir *walk)
+static t_dir	*walk_list(t_dir *w, int flags, t_dir *next, int mode)
 {
-	t_dir	*result;
-
-	result = NULL;
-	while (!result)
+	while (w && mode != 2)
 	{
-		result = walk->sub_u;
-		if (!result)
+		next = w->next;
+		if (mode == 1)
+			list_free(w);
+		w = ((mode == 0) ? (w) : (next));
+		if (!w)
 			break ;
-		if (!result->next)
+		if ((w->stream = opendir(w->info->path)) ? (0) : !open_error(&w, flags))
 		{
-			result = result->next;
-			walk = walk->sub_u;
-			continue ;
+			next = w->next;
+			list_free(w);
+			w = next;
 		}
 		else
-			return (result->next);
-	}
-	return (result);
-}
-
-static t_dir	*open_catalog(t_dir *w)
-{
-	t_dir *walk_sub_u;
-
-	if (w)
-	{
-		walk_sub_u = sub_unext(w);
-		while (w)
-		{
-			if ((w->stream = opendir(w->info->path)) ? (0) : !open_error(&w))
-				w = w->next;
-			else
-				break ;
-		}
-		if (!w)
-			w = open_catalog(walk_sub_u);
+			break ;
 	}
 	return (w);
 }
 
-static	t_dir	*sub_up(t_dir *dir)
+static t_dir	*open_catalog(t_dir *w, int flags, int mode)
 {
-	if (dir)
+	t_dir *walk_sub_u;
+	t_dir *next;
+
+	next = NULL;
+	if (w)
 	{
-		if (dir->next)
-			return (dir->next);
-		else
-			dir = sub_up(dir->sub_u);
+		walk_sub_u = w->sub_u;
+		w = walk_list(w, flags, next, mode);
+		if (!w || mode == 2)
+		{
+			if (w)
+				list_free(w);
+			w = open_catalog(walk_sub_u, flags, 1);
+		}
 	}
-	return (dir);
+	return (w);
 }
 
 void			recursive_help(t_dir **w, t_dir **s, t_dir **next, int *flags)
 {
+	t_dir *prev;
+
 	sort(*w, *flags);
+	prev = *w;
 	closedir((*w)->stream);
+	(*w) = display(*w, flags);
 	*next = (*w)->next;
-	*s = (*w)->sub_u;
+	*s = *w;
 	*w = check_dir(*w);
 	if (!(*w))
 	{
 		*w = *next;
 		if (!(*w))
-			*w = sub_up(*s);
+			*w = open_catalog(*s, *flags, 2);
+		else
+		{
+			list_free(prev);
+			*w = open_catalog(*w, *flags, 0);
+		}
 	}
-	*w = open_catalog(*w);
+	else
+		*w = open_catalog(*w, *flags, 0);
+	if (*w)
+		ft_putchar('\n');
 }

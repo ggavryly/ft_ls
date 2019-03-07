@@ -18,7 +18,7 @@ void	put_error(t_dir *dir)
 	ft_putstr_fd("\n", 2);
 }
 
-int		open_error(t_dir **if_error)
+int		open_error(t_dir **if_error, int flags)
 {
 	char str[256];
 
@@ -28,6 +28,7 @@ int		open_error(t_dir **if_error)
 	ft_strcat((*if_error)->info->name, str);
 	ft_strcat((*if_error)->info->name, ": ");
 	ft_strcat((*if_error)->info->name, strerror(errno));
+	(*if_error) = display(*if_error, &flags);
 	return (0);
 }
 

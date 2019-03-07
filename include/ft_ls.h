@@ -90,7 +90,8 @@ t_info				*init_start(int ar, char **av, int *flags, t_info *args);
 void				init_data(t_info **tl, t_dire *t, t_info **d);
 int					init_option(int ar, char **av, int	*flags);
 t_dir				*init_info(int flags, t_dir *head);
-t_dir				*display(t_dir *dir, int flags);
+t_dir				*display(t_dir *dir, int *flags);
+t_info				*display_dir(t_dir *dir, int flags);
 void				info_copy(t_info *dst, t_info *tmp_info);
 
 void				path_manage(t_dir *curr, t_info *curr_ar_path);
@@ -98,7 +99,7 @@ void				add_path(t_info *curr, t_dire *curr_dire, t_info *list);
 
 void				put_err(t_info *error, int mode);
 t_info				*error_check(t_info *args, int mode);
-int					open_error(t_dir **if_error);
+int					open_error(t_dir **if_error, int flags);
 void				put_error(t_dir *dir);
 
 void				total_put(t_info *info);

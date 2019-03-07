@@ -28,10 +28,8 @@ int		main(int ar, char **av)
 		dir = allocate_dir(dir);
 		path_manage(dir, args);
 		init_info(flags, dir);
-		display(dir, flags);
 		if (args->next)
 			ft_putstr("\n");
-		list_free(dir);
 		args = args->next;
 	}
 	return (0);

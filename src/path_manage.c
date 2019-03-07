@@ -37,7 +37,8 @@ t_info	*allocate_info(t_info *info)
 void	add_path(t_info *dst, t_dire *curr_dire, t_info *list)
 {
 	ft_strcpy(dst->path, list->path);
-	ft_strcat(dst->path, "/");
+	if (ft_strcmp(list->path, "/"))
+		ft_strcat(dst->path, "/");
 	ft_strcat(dst->path, curr_dire->d_name);
 }
 

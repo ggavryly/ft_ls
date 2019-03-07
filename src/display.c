@@ -12,7 +12,7 @@
 
 #include "../include/ft_ls.h"
 
-static t_info	*display_dir(t_dir *dir, int flags)
+t_info			*display_dir(t_dir *dir, int flags)
 {
 	t_info *head;
 
@@ -60,30 +60,18 @@ static	t_dir	*display_dirs(t_dir *dir, int flags)
 	return (head);
 }
 
-t_dir			*display(t_dir *dir, int flags)
+t_dir			*display(t_dir *dir, int *flags)
 {
-	if (!dir->sub_d)
-	{
-		if (flags & BIG)
-		{
-			ft_putstr(dir->info->path);
-			ft_putstr(":\n");
-		}
-		dir->info = display_dir(dir, flags);
-	}
-	else if (flags & BIG)
+	if (*flags & BIG)
 	{
 		ft_putstr(dir->info->path);
 		ft_putstr(":\n");
-		dir->info = display_dir(dir, flags);
-		ft_putstr("\n");
-		dir = display_dirs(dir->sub_d, flags);
+		dir->info = display_dir(dir, *flags);
 	}
-	else if (!(flags & BIG))
+	else
 	{
-		dir->info = display_dir(dir, flags);
-		ft_putstr("\n");
-		dir = display_dirs(dir->sub_d, flags);
+		*flags |= BIG;
+		dir->info = display_dir(dir, *flags);
 	}
 	return (dir);
 }

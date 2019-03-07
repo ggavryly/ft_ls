@@ -28,17 +28,13 @@ static void	info_free(t_info *info)
 
 void		list_free(t_dir *dir)
 {
-	t_dir *next;
-
-	while (dir)
-	{
-		next = dir->next;
-		if (dir->sub_d)
-			list_free(dir->sub_d);
-		info_free(dir->info);
-		free(dir);
-		dir = next;
-	}
+	dir->stream = NULL;
+	dir->sub_d = NULL;
+	dir->sub_u = NULL;
+	dir->next = NULL;
+	info_free(dir->info);
+	dir->info = NULL;
+	free(dir);
 }
 
 void		recursive(t_dir **h, t_dir **l, t_info **t, t_dir **dir)
