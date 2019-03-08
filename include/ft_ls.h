@@ -86,6 +86,7 @@ t_info				*reverse_dir(t_info *info);
 void				free_path(char **path_ar);
 
 void				init_stat(t_info *tmp_inf, t_dire *tmp_dire);
+void				info_to_null(t_info *info);
 t_info				*init_start(int ar, char **av, int *flags, t_info *args);
 void				init_data(t_info **tl, t_dire *t, t_info **d);
 int					init_option(int ar, char **av, int	*flags);

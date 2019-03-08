@@ -105,3 +105,15 @@ void			recursive_help(t_dir **w, t_dir **s, t_dir **next, int *flags)
 	if (*w)
 		ft_putchar('\n');
 }
+
+void			info_to_null(t_info *info)
+{
+	info->error_num = 0;
+	info->mode = 0;
+	info->nlink = 0;
+	info->uid = 0;
+	info->gid = 0;
+	info->dev = 0;
+	info->size = 0;
+	info->blocks = 0;
+}

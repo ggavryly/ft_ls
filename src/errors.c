@@ -22,7 +22,7 @@ int		open_error(t_dir **if_error, int flags)
 {
 	char str[256];
 
-	(*if_error)->info->error_num = 1;
+	(*if_error)->info->error_num = errno;
 	ft_strcpy(str, (*if_error)->info->name);
 	ft_strcpy((*if_error)->info->name, "ft_ls: ");
 	ft_strcat((*if_error)->info->name, str);

@@ -20,7 +20,7 @@ static	void	split_option(int i, char **av, int *flags)
 	while (av[i][j])
 	{
 		if (av[i][j] != 'l' && av[i][j] != 'R' && av[i][j] != 'a'
-			&& av[i][j] != 'r' && av[i][j] != 't')
+			&& av[i][j] != 'r' && av[i][j] != 't' && av[i][j] != '1')
 		{
 			ft_putstr("ft_ls: illegal option : -- ");
 			ft_putchar(av[i][j]);
@@ -44,7 +44,7 @@ int				init_option(int ar, char **av, int *flags)
 	while (i < ar && av[i][0] == '-' && av[i][1])
 	{
 		if (av[i][1] != 'l' && av[i][1] != 'R' && av[i][1] != 'a'
-		&& av[i][1] != 'r' && av[i][1] != 't')
+		&& av[i][1] != 'r' && av[i][1] != 't' && av[i][1] != '1')
 		{
 			ft_putstr("ft_ls: illegal option : -- ");
 			ft_putchar(av[i][1]);

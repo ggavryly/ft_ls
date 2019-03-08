@@ -41,6 +41,7 @@ void	flag_l_cbl(t_info *info, int flag)
 {
 	char	buf[256];
 
+	ft_bzero(buf, 256);
 	if (flag == 1)
 	{
 		ft_printf(" %d", major(info->dev));
