@@ -1,4 +1,4 @@
-# ft_ls
+# ft_ls 42
 My own implementation of the famous Unix command: ls, using the C programming language.
 
 ### Requirements
